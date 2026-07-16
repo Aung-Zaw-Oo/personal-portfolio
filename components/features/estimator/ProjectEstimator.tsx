@@ -1,47 +1,33 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ProjectType, ProjectOption, RangeValue } from "./type";
 import RangeControl from "./RangeControl";
 import Container from "@/components/ui/Container";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMoneyBillTransfer } from "@fortawesome/free-solid-svg-icons";
 
 const projectOptions: ProjectOption[] = [
-  {
-    id: "webapp",
-    label: "Web Application",
-    multiplier: 1,
-  },
-  {
-    id: "ecommerce",
-    label: "E-commerce Store",
-    multiplier: 1.2,
-  },
-  {
-    id: "landing",
-    label: "Premium Design Landing",
-    multiplier: 0.6,
-  },
-  {
-    id: "custom",
-    label: "Bespoke / Custom API",
-    multiplier: 1.5,
-  },
+  { id: "webapp", label: "Custom Web App / Portal", multiplier: 1 },
+  { id: "ecommerce", label: "E-commerce Online Store", multiplier: 1.2 },
+  { id: "landing", label: "Marketing Landing Page", multiplier: 0.6 },
+  { id: "custom", label: "Complex Custom Software", multiplier: 1.5 },
 ];
 
 const complexityLevels: RangeValue[] = [
   {
-    label: "Minimal (1-4 views)",
+    label: "Simple & Clean (Basic features)",
     duration: "4-5 Weeks",
     multiplier: 0.8,
   },
   {
-    label: "Medium (5-10 views)",
+    label: "Growth & Scale (Advanced features)",
     duration: "6-8 Weeks",
     multiplier: 1.2,
   },
   {
-    label: "Enterprise",
+    label: "Full Scale / Corporate (Deep customization)",
     duration: "12-16 Weeks",
     multiplier: 2.2,
   },
@@ -49,20 +35,16 @@ const complexityLevels: RangeValue[] = [
 
 const timelineLevels: RangeValue[] = [
   {
-    label: "Urgent (Rush)",
+    label: "Fast-Track (Priority delivery)",
     duration: "4 Weeks",
     multiplier: 1.6,
   },
   {
-    label: "Standard",
+    label: "Standard Pace (Recommended)",
     duration: "6-8 Weeks",
     multiplier: 1.1,
   },
-  {
-    label: "Relaxed",
-    duration: "10-14 Weeks",
-    multiplier: 0.9,
-  },
+  { label: "Flexible / Relaxed", duration: "10-14 Weeks", multiplier: 0.9 },
 ];
 
 interface ProjectEstimatorProps {
@@ -74,6 +56,44 @@ export default function ProjectEstimator({ onPrefill }: ProjectEstimatorProps) {
   const [complexity, setComplexity] = useState(1);
   const [timeline, setTimeline] = useState(1);
 
+  // Currency States
+  const [currency, setCurrency] = useState<"USD" | "MMK">("USD");
+  const [exchangeRate, setExchangeRate] = useState<number>(4000);
+  const [isLoadingRate, setIsLoadingRate] = useState<boolean>(false);
+
+  // Safely consume the internal Next.js API Route handler 
+  useEffect(() => {
+    async function fetchRates() {
+      setIsLoadingRate(true);
+      try {
+        const res = await fetch("/api/exchange-rate");
+        if (!res.ok) throw new Error("Internal route error");
+        
+        const data = await res.json();
+
+        if (data && data.rate) {
+          const fetchedRate = Number(data.rate);
+
+          if (fetchedRate < 3000) {
+            setExchangeRate(4000); 
+          } else {
+            setExchangeRate(fetchedRate);
+          }
+        }
+      } catch (error) {
+        console.error(
+          "Failed to fetch live currency adjustments from internal handler, using default fallback.",
+          error
+        );
+        setExchangeRate(4000);
+      } finally {
+        setIsLoadingRate(false);
+      }
+    }
+
+    fetchRates();
+  }, []);
+
   const selectedProject =
     projectOptions.find((item) => item.id === projectType) ?? projectOptions[0];
   const selectedComplexity = complexityLevels[complexity];
@@ -83,46 +103,67 @@ export default function ProjectEstimator({ onPrefill }: ProjectEstimatorProps) {
     const complexityData = complexityLevels[complexity];
     const timelineData = timelineLevels[timeline];
 
-    const basePrice = 5000;
-    const total =
+    const basePrice = 500;
+    const totalInUSD =
       basePrice *
       selectedProject.multiplier *
       complexityData.multiplier *
       timelineData.multiplier;
 
-    const min = Math.round(total * 0.8);
-    const max = Math.round(total * 1.3);
+    let min = Math.round(totalInUSD * 0.8);
+    let max = Math.round(totalInUSD * 1.3);
+
+    if (currency === "MMK") {
+      min = min * exchangeRate;
+      max = max * exchangeRate;
+
+      return {
+        price: `${min.toLocaleString()} MMK - ${max.toLocaleString()} MMK`,
+        duration: timelineData.duration,
+        complexity: complexityData.label,
+      };
+    }
 
     return {
-      price: `$${min.toLocaleString()} - $${max.toLocaleString()}`,
+      price: `$${min.toLocaleString()} - $${max.toLocaleString()} USD`,
       duration: timelineData.duration,
       complexity: complexityData.label,
     };
-  }, [selectedProject.multiplier, complexity, timeline]);
+  }, [
+    selectedProject.multiplier,
+    complexity,
+    timeline,
+    currency,
+    exchangeRate,
+  ]);
 
   return (
-    <section className="w-full py-24" id="quote">
+    <section className="w-full py-16 sm:py-20 lg:py-24" id="quote">
       <Container>
-        <div className="relative overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900/30 p-6 shadow-2xl backdrop-blur-md md:p-8">
-          {/* Ambient Purple Backdrop Glow */}
-          <div className="absolute -top-12 -right-12 -z-10 h-32 w-32 rounded-full bg-violet-500/10 blur-3xl transition-all duration-500" />
+        <div className="relative overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900/30 p-4 shadow-2xl backdrop-blur-md sm:p-6 md:p-8">
+          <div className="absolute -top-12 -right-12 -z-10 h-32 w-32 rounded-full bg-violet-500/10 blur-3xl" />
 
-          <h3 className="mb-8 flex items-center gap-3 text-2xl font-bold text-white">
-            <span className="text-violet-400">⚙</span>
-            Interactive Project Scope Builder
+          <h3 className="mb-6 flex flex-wrap items-center gap-3 text-xl font-bold text-white sm:mb-8 sm:text-2xl">
+            <span className="text-violet-400">
+              <FontAwesomeIcon icon={faMoneyBillTransfer}></FontAwesomeIcon>
+            </span>
+            Instant Project Cost Calculator
+            {isLoadingRate && (
+              <span className="text-xs font-normal text-zinc-500 animate-pulse">
+                (Syncing live updates...)
+              </span>
+            )}
           </h3>
 
-          {/* Two-Column Layout Grid */}
-          <div className="grid items-start gap-8 lg:grid-cols-12">
-            {/* LEFT COLUMN: Controls & Selections */}
-            <div className="space-y-8 lg:col-span-7">
-              {/* PROJECT TYPE */}
+          <div className="grid items-start gap-6 sm:gap-8 lg:grid-cols-12">
+            {/* LEFT COLUMN: User selections */}
+            <div className="space-y-6 sm:space-y-8 lg:col-span-7">
               <div role="radiogroup" aria-labelledby="project-type-label">
                 <label
                   id="project-type-label"
                   className="mb-3 block text-sm font-medium text-zinc-300"
                 >
-                  What style of project are we engineering?
+                  What type of project are we building together?
                 </label>
                 <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                   {projectOptions.map((option) => {
@@ -133,15 +174,12 @@ export default function ProjectEstimator({ onPrefill }: ProjectEstimatorProps) {
                         role="radio"
                         aria-checked={isSelected}
                         onClick={() => setProjectType(option.id)}
-                        className={`group relative flex items-center justify-between overflow-hidden rounded-xl border px-4 py-3 text-left text-sm transition-all duration-300 outline-none focus:ring-1 focus:ring-violet-500/40 ${
+                        className={`group relative flex items-center justify-between overflow-hidden rounded-xl border px-4 py-3 text-left text-sm transition-all duration-300 ${
                           isSelected
                             ? "border-violet-500/40 bg-violet-500/10 text-white"
                             : "border-zinc-800 bg-zinc-900/40 text-zinc-400 hover:border-zinc-700 hover:text-white"
                         }`}
                       >
-                        {/* Dynamic Button Hover Glow Accent */}
-                        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-violet-500/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-
                         <span className="font-medium">{option.label}</span>
                         {isSelected && (
                           <motion.span
@@ -158,31 +196,60 @@ export default function ProjectEstimator({ onPrefill }: ProjectEstimatorProps) {
                 </div>
               </div>
 
-              {/* COMPLEXITY SLIDER */}
               <RangeControl
-                label="Estimated project scale & complexity"
+                label="How complex are the features you need?"
                 value={complexity}
                 setValue={setComplexity}
                 items={complexityLevels}
               />
 
-              {/* TIMELINE SLIDER */}
               <RangeControl
-                label="Timeline flexibility"
+                label="How quickly do you need this launched?"
                 value={timeline}
                 setValue={setTimeline}
                 items={timelineLevels}
               />
             </div>
 
-            {/* RIGHT COLUMN: Real-time Calculation Panel */}
-            <div className="space-y-4 lg:sticky lg:top-6 lg:col-span-5">
-              <div className="rounded-2xl border border-zinc-800/80 bg-zinc-950/60 p-6 shadow-inner backdrop-blur-md">
+            {/* RIGHT COLUMN: Output display & conversion parameters */}
+            <div className="space-y-3 sm:space-y-4 lg:sticky lg:top-6 lg:col-span-5">
+              <div className="rounded-2xl border border-zinc-800/80 bg-zinc-950/60 p-4 shadow-inner backdrop-blur-md sm:p-6">
                 <div className="space-y-6">
-                  {/* PRICE DISPLAY */}
+                  {/* LOCALIZED CURRENCY SELECTOR */}
+                  <div className="flex items-center justify-between border-b border-zinc-800/60 pb-3">
+                    <span className="text-xs font-semibold tracking-widest text-zinc-500 uppercase">
+                      Display Currency
+                    </span>
+                    <div className="flex rounded-lg border border-zinc-800 bg-zinc-900 p-0.5">
+                      <button
+                        type="button"
+                        onClick={() => setCurrency("USD")}
+                        className={`rounded-md px-3 py-1 text-xs font-bold transition-all ${
+                          currency === "USD"
+                            ? "bg-violet-600 text-white shadow"
+                            : "text-zinc-400 hover:text-white"
+                        }`}
+                      >
+                        USD
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setCurrency("MMK")}
+                        className={`rounded-md px-3 py-1 text-xs font-bold transition-all ${
+                          currency === "MMK"
+                            ? "bg-violet-600 text-white shadow"
+                            : "text-zinc-400 hover:text-white"
+                        }`}
+                      >
+                        MMK
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* BUDGET OUTPUT */}
                   <div>
                     <p className="mb-2 text-xs font-semibold tracking-widest text-zinc-500 uppercase">
-                      Recommended Budget Range
+                      Estimated Budget Range
                     </p>
                     <div className="relative h-12 overflow-hidden">
                       <AnimatePresence mode="wait">
@@ -191,8 +258,8 @@ export default function ProjectEstimator({ onPrefill }: ProjectEstimatorProps) {
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: -10 }}
-                          transition={{ duration: 0.15, ease: "easeOut" }}
-                          className="absolute inset-0 bg-gradient-to-r from-white via-zinc-200 to-zinc-400 bg-clip-text text-4xl font-extrabold text-transparent"
+                          transition={{ duration: 0.15 }}
+                          className="absolute inset-0 bg-gradient-to-r from-white via-zinc-200 to-zinc-400 bg-clip-text text-xl leading-none font-extrabold text-transparent sm:text-2xl lg:text-3xl"
                         >
                           {estimate.price}
                         </motion.div>
@@ -200,10 +267,10 @@ export default function ProjectEstimator({ onPrefill }: ProjectEstimatorProps) {
                     </div>
                   </div>
 
-                  {/* TIMELINE DISPLAY */}
+                  {/* TIMELINE OUTPUT */}
                   <div className="border-t border-zinc-800/60 pt-4">
                     <p className="mb-1 text-xs font-semibold tracking-widest text-zinc-500 uppercase">
-                      Estimated Timeline
+                      Estimated Delivery Timeline
                     </p>
                     <div className="relative h-8 overflow-hidden">
                       <AnimatePresence mode="wait">
@@ -212,8 +279,8 @@ export default function ProjectEstimator({ onPrefill }: ProjectEstimatorProps) {
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: -10 }}
-                          transition={{ duration: 0.15, ease: "easeOut" }}
-                          className="absolute inset-0 text-xl font-semibold text-zinc-200"
+                          transition={{ duration: 0.15 }}
+                          className="absolute inset-0 text-lg font-semibold text-zinc-200 sm:text-xl"
                         >
                           {estimate.duration}
                         </motion.div>
@@ -223,20 +290,19 @@ export default function ProjectEstimator({ onPrefill }: ProjectEstimatorProps) {
                 </div>
               </div>
 
-              {/* ACTION CTA */}
+              {/* ACTION CALL TO ACTION */}
               <button
-                className="w-full rounded-xl bg-violet-600 py-4 font-semibold text-white transition-all duration-300 hover:bg-violet-500 hover:shadow-lg hover:shadow-violet-600/20 focus:ring-2 focus:ring-violet-500/50 focus:outline-none active:scale-[0.99]"
+                className="w-full rounded-xl bg-violet-600 px-4 py-4 text-sm font-semibold text-white transition-all hover:bg-violet-500 active:scale-[0.99] sm:text-base"
                 onClick={() => {
                   onPrefill?.({
-                    projectType: `${selectedProject.label} • ${selectedComplexity.label} • ${selectedTimeline.label}`,
+                    projectType: `${selectedProject.label} • ${selectedComplexity.label}`,
                     message: [
                       `Project Type: ${selectedProject.label}`,
                       `Complexity: ${selectedComplexity.label}`,
-                      `Timeline: ${selectedTimeline.label}`,
                       `Estimated Budget: ${estimate.price}`,
-                      `Estimated Duration: ${estimate.duration}`,
+                      `Conversion Baseline Rate: 1 USD = ${exchangeRate} MMK`,
                       "",
-                      "I'd love to discuss this project and bring it to life.",
+                      "Hi! I generated this custom layout estimation and would love to lock in a consultation.",
                     ].join("\n"),
                   });
 
@@ -245,8 +311,16 @@ export default function ProjectEstimator({ onPrefill }: ProjectEstimatorProps) {
                     ?.scrollIntoView({ behavior: "smooth", block: "start" });
                 }}
               >
-                Pre-fill Project Details Into Contact Form ↓
+                Secure This Estimate & Get Started →
               </button>
+
+              {/* COMPLIANCE DISCLAIMER FOR THE LOCAL REGION */}
+              <p className="px-2 text-center text-[11px] leading-normal text-zinc-500">
+                * Estimates are calculated dynamically based on baseline
+                development scope. Final invoice estimates can adjust depending
+                on custom market components or significant variations in local
+                exchange volatility.
+              </p>
             </div>
           </div>
         </div>
