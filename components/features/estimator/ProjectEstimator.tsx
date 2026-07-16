@@ -56,26 +56,24 @@ export default function ProjectEstimator({ onPrefill }: ProjectEstimatorProps) {
   const [complexity, setComplexity] = useState(1);
   const [timeline, setTimeline] = useState(1);
 
-  // Currency States
   const [currency, setCurrency] = useState<"USD" | "MMK">("USD");
   const [exchangeRate, setExchangeRate] = useState<number>(4000);
   const [isLoadingRate, setIsLoadingRate] = useState<boolean>(false);
 
-  // Safely consume the internal Next.js API Route handler 
   useEffect(() => {
     async function fetchRates() {
       setIsLoadingRate(true);
       try {
         const res = await fetch("/api/exchange-rate");
         if (!res.ok) throw new Error("Internal route error");
-        
+
         const data = await res.json();
 
         if (data && data.rate) {
           const fetchedRate = Number(data.rate);
 
           if (fetchedRate < 3000) {
-            setExchangeRate(4000); 
+            setExchangeRate(4000);
           } else {
             setExchangeRate(fetchedRate);
           }
@@ -83,7 +81,7 @@ export default function ProjectEstimator({ onPrefill }: ProjectEstimatorProps) {
       } catch (error) {
         console.error(
           "Failed to fetch live currency adjustments from internal handler, using default fallback.",
-          error
+          error,
         );
         setExchangeRate(4000);
       } finally {
@@ -149,7 +147,7 @@ export default function ProjectEstimator({ onPrefill }: ProjectEstimatorProps) {
             </span>
             Instant Project Cost Calculator
             {isLoadingRate && (
-              <span className="text-xs font-normal text-zinc-500 animate-pulse">
+              <span className="animate-pulse text-xs font-normal text-zinc-500">
                 (Syncing live updates...)
               </span>
             )}

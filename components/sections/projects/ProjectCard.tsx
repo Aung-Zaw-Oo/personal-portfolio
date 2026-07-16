@@ -13,12 +13,6 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
-  // Arrow slide variant configuration
-  const arrowVariants = {
-    initial: { x: 0, y: 0 },
-    hover: { x: 3, y: -3 },
-  };
-
   return (
     <motion.article
       layout="position"
@@ -89,7 +83,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
           {/* Micro-interaction: Slides arrow diagonally upward-right on block hover */}
           <motion.span
-            variants={arrowVariants}
+            whileHover={{ x: 3, y: -3 }}
             transition={{ type: "spring", stiffness: 350, damping: 15 }}
             className="inline-block"
           >

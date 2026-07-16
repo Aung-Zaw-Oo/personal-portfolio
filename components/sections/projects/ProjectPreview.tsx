@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-// 1. Use the new non-deprecated motion factory API
 const MotionImage = motion.create(Image);
 
 interface ProjectPreviewProps {
@@ -19,7 +18,6 @@ export default function ProjectPreview({
 }: ProjectPreviewProps) {
   return (
     <div className="group relative m-1.5 aspect-[16/10] overflow-hidden rounded-[22px] border border-zinc-800/60 bg-zinc-950">
-      {/* 2. Optimized Next.js Image with modern Framer Motion Layout handling */}
       <MotionImage
         layout="position"
         src={image}

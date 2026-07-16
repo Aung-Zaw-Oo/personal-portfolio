@@ -71,7 +71,7 @@ export default function Button({
   return (
     <a
       href={href}
-      className={` ${baseStyles} ${variants[variant]} ${className} `}
+      className={`${baseStyles} ${variants[variant]} ${className}`}
     >
       {children}
 
