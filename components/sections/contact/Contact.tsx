@@ -53,7 +53,7 @@ export default function Contact({ prefillData }: ContactProps) {
   return (
     <section
       id="contact"
-      className="relative z-10 border-t border-zinc-900 bg-zinc-950/60 py-24 backdrop-blur-sm"
+      className="relative z-10 border-t border-zinc-900 bg-zinc-950/60 py-24"
     >
       <Container>
         <motion.div

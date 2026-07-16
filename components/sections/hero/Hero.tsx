@@ -122,7 +122,7 @@ export default function Hero() {
               className="mt-12 grid w-full max-w-md grid-cols-3 gap-8 border-t border-zinc-800 pt-8"
             >
               <div>
-                <p className="font-heading text-3xl font-bold">1+</p>
+                <p className="font-heading text-3xl font-bold">2+</p>
                 <p className="text-xs text-zinc-500 uppercase">
                   Years Experience
                 </p>

@@ -41,7 +41,6 @@ export default function CodeTerminal({
       transition={{ type: "spring", stiffness: 400, damping: 25 }}
       className="relative w-full max-w-md overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-950/70 shadow-2xl backdrop-blur-xl"
     >
-      {/* Terminal Header */}
       <div className="flex items-center justify-between border-b border-zinc-900 px-5 py-3">
         <div className="flex gap-1.5">
           <span className="h-3 w-3 rounded-full bg-red-500/80" />
@@ -52,7 +51,6 @@ export default function CodeTerminal({
         <span className="font-mono text-[11px] text-zinc-500">{filename}</span>
       </div>
 
-      {/* Code Body */}
       <div className="p-6 font-mono text-xs leading-relaxed text-zinc-300">
         <p className="text-emerald-400">import Developer from "@core/human";</p>
 

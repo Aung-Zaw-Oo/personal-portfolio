@@ -14,15 +14,15 @@ export default function RangeControl({ label, value, setValue, items }: Props) {
   return (
     <div className="group/range">
       {/* Header */}
-      <div className="mb-3 flex h-5 items-center justify-between text-sm">
+      <div className="mb-3 flex flex-col gap-2 text-sm sm:flex-row sm:items-center sm:justify-between">
         <label
           id={`${label}-label`}
-          className="text-zinc-300 transition-colors duration-300 group-hover/range:text-zinc-200"
+          className="leading-snug text-zinc-300 transition-colors duration-300 group-hover/range:text-zinc-200"
         >
           {label}
         </label>
 
-        <div className="relative h-5 min-w-[150px] text-right font-mono font-semibold text-violet-400">
+        <div className="w-full font-mono text-sm font-semibold text-violet-400 sm:w-auto sm:min-w-[150px] sm:text-right">
           <AnimatePresence mode="wait">
             <motion.span
               key={value}
@@ -30,7 +30,7 @@ export default function RangeControl({ label, value, setValue, items }: Props) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -6 }}
               transition={{ duration: 0.12, ease: "easeOut" }}
-              className="absolute top-0 right-0 block whitespace-nowrap"
+              className="block leading-tight whitespace-normal sm:whitespace-nowrap"
             >
               {items[value].label}
             </motion.span>
@@ -56,24 +56,26 @@ export default function RangeControl({ label, value, setValue, items }: Props) {
       </motion.div>
 
       {/* Slider Labels */}
-      <div className="relative mt-3 h-5 w-full font-mono text-[10px] text-zinc-600">
-        {items.map((item, idx) => {
-          const position =
-            items.length === 1 ? 50 : (idx / (items.length - 1)) * 100;
-          return (
-            <span
-              key={idx}
-              style={{ left: `${position}%` }}
-              className={`absolute -translate-x-1/2 whitespace-nowrap transition-colors duration-300 ${
-                value === idx
-                  ? "font-medium text-violet-400/80"
-                  : "group-hover/range:text-zinc-500"
-              }`}
-            >
-              {item.label.split(" (")[0]}
-            </span>
-          );
-        })}
+      <div className="mt-3 flex justify-between font-mono text-[10px] text-zinc-600">
+        <span
+          className={`transition-colors ${
+            value === 0
+              ? "font-medium text-violet-400"
+              : "group-hover/range:text-zinc-500"
+          }`}
+        >
+          {items[0].label.split(" (")[0]}
+        </span>
+
+        <span
+          className={`transition-colors ${
+            value === items.length - 1
+              ? "font-medium text-violet-400"
+              : "group-hover/range:text-zinc-500"
+          }`}
+        >
+          {items[items.length - 1].label.split(" (")[0]}
+        </span>
       </div>
     </div>
   );

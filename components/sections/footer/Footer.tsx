@@ -54,19 +54,19 @@ const footerLinks = [
 
 const socials = [
   {
-    label: "Github",
-    href: "https://github.com",
-    icon: faGithub,
+    label: "Mail",
+    href: "mailto:1997azo.azo@gmail.com",
+    icon: faEnvelope,
   },
   {
     label: "LinkedIn",
-    href: "https://linkedin.com",
+    href: "https://www.linkedin.com/in/aung-zaw-oo-180a46387/",
     icon: faLinkedin,
   },
   {
-    label: "Twitter",
-    href: "https://twitter.com",
-    icon: faXTwitter,
+    label: "Github",
+    href: "https://github.com/Aung-Zaw-Oo",
+    icon: faGithub,
   },
 ];
 
