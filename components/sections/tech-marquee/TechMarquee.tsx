@@ -30,7 +30,7 @@ export default function TechMarquee() {
         {[...items, ...items].map((item, index) => (
           <span
             key={index}
-            className="flex items-center gap-4 font-heading text-3xl font-bold tracking-widest whitespace-nowrap text-zinc-700 uppercase"
+            className="flex items-center gap-4 font-heading text-3xl font-bold tracking-widest whitespace-nowrap text-zinc-100 uppercase"
           >
             {item.text}
 

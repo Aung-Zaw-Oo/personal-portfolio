@@ -71,7 +71,7 @@ export default function Skills() {
 
           <motion.p
             variants={headerChildVariants}
-            className="mt-4 text-zinc-400"
+            className="mt-4 text-slate-300"
           >
             A modern technology stack focused on building fast, scalable, and
             maintainable web applications.

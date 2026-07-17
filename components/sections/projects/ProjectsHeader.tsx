@@ -60,7 +60,7 @@ export default function ProjectsHeader() {
         {/* Description */}
         <motion.p
           variants={itemVariants}
-          className="max-w-xl text-base leading-relaxed font-light text-zinc-400"
+          className="max-w-xl text-base leading-relaxed font-light text-slate-300"
         >
           Explore a collection of modern web applications, platforms, and
           digital experiences built with thoughtful design, scalable

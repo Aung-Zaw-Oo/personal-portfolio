@@ -5,8 +5,14 @@
 ======================================== */
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  --background: #06070b;
+  --foreground: #f8fafc;
+  --muted: #cbd5e1;
+  --muted-strong: #e2e8f0;
+  --surface-1: #0f172a;
+  --surface-2: #111827;
+  --surface-3: #1f2937;
+  --border: #334155;
 
   --font-heading: var(--font-space-grotesk);
   --font-body: var(--font-plus-jakarta);
@@ -48,6 +54,13 @@ body {
   overflow-x: hidden;
   min-height: 100vh;
   min-height: 100dvh;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(139, 92, 246, 0.35);
+  color: #f8fafc;
 }
 
 /* ========================================

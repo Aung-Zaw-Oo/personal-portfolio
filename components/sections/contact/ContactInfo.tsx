@@ -14,7 +14,7 @@ export default function ContactInfo() {
         Ready to Build Your Next Digital Product?
       </h2>
 
-      <p className="mb-8 text-base leading-relaxed font-light text-zinc-400">
+      <p className="mb-8 text-base leading-relaxed font-light text-slate-300">
         Have an idea, project requirement, or want to discuss opportunities?
         Feel free to reach out. I would love to hear about your project and
         explore how we can build it together.

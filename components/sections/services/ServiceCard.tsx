@@ -76,7 +76,7 @@ export default function ServiceCard({ service }: Props) {
         </h3>
 
         {/* Description */}
-        <p className="text-sm leading-relaxed font-light text-zinc-400">
+        <p className="text-sm leading-relaxed font-light text-slate-300">
           {service.description}
         </p>
       </div>

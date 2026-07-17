@@ -47,20 +47,20 @@ export default function AboutContent() {
     >
       {/* Story Text Paragraphs */}
       <motion.div variants={itemVariants} className="space-y-6">
-        <p className="text-lg leading-relaxed text-zinc-300">
+        <p className="text-lg leading-relaxed text-slate-200">
           I am a Full Stack Developer with a professional background in banking,
           accounting, and data reporting. My experience working with business
           data helped me understand how technology can solve real operational
           problems.
         </p>
 
-        <p className="leading-relaxed text-zinc-400">
+        <p className="leading-relaxed text-slate-300">
           My journey into software engineering started through self-learning and
           continuous practice. Today, I build modern web applications combining
           clean frontend experiences with reliable backend systems.
         </p>
 
-        <p className="leading-relaxed text-zinc-400">
+        <p className="leading-relaxed text-slate-300">
           I enjoy transforming ideas into functional products — from designing
           intuitive interfaces to developing APIs, database structures, and
           scalable application logic.
@@ -100,7 +100,7 @@ export default function AboutContent() {
         variants={itemVariants}
         whileHover={{ scale: 1.01 }}
         transition={{ type: "spring", stiffness: 400, damping: 25 }}
-        className="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-6"
+        className="rounded-2xl border border-slate-800/80 bg-slate-900/60 p-6 shadow-sm shadow-black/20"
       >
         <div className="flex items-center gap-3">
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500/10">
@@ -114,13 +114,13 @@ export default function AboutContent() {
               Professional Journey
             </h3>
 
-            <p className="text-sm text-zinc-400">
+            <p className="text-sm text-slate-300">
               Banking Operations → Software Engineering
             </p>
           </div>
         </div>
 
-        <p className="mt-4 text-sm leading-relaxed text-zinc-400">
+        <p className="mt-4 text-sm leading-relaxed text-slate-300">
           Combining business understanding with technical expertise allows me to
           build software that is not only functional, but also aligned with
           real-world requirements.
