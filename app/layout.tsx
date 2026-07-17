@@ -6,6 +6,7 @@ import ParticleBackground from "@/components/effects/ParticleBackground";
 import CustomCursor from "@/components/effects/CustomCursor";
 import ScrollToTopButton from "@/components/ui/ScrollToTopButton";
 import SectionPill from "@/components/ui/SectionPill";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -42,6 +43,7 @@ export default function RootLayout({
         <SectionPill />
         {children}
         <ScrollToTopButton />
+        <SpeedInsights />
       </body>
     </html>
   );
