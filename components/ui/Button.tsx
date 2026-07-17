@@ -10,74 +10,107 @@ interface ButtonProps {
   variant?: ButtonVariant;
   href?: string;
   className?: string;
+  type?: "button" | "submit" | "reset";
 }
 
 export default function Button({
   children,
   icon,
   variant = "primary",
-  href = "#",
+  href,
   className = "",
+  type = "button",
 }: ButtonProps) {
   const baseStyles = `
+    group
     inline-flex
     items-center
     justify-center
-    gap-2
+    gap-2.5
+    whitespace-nowrap
+    rounded-2xl
+    border-transparent
+    px-6
+    py-4
     text-sm
     font-semibold
     transition-all
-    duration-300
+    duration-200
+    focus:outline-none
+    focus-visible:ring-2
+    focus-visible:ring-blue-400/60
+    focus-visible:ring-offset-2
+    focus-visible:ring-offset-slate-950
+    active:scale-[0.98]
+    active:brightness-110
   `;
 
-  const variants = {
+  const variants: Record<ButtonVariant, string> = {
     primary: `
-      rounded-2xl
       bg-gradient-to-r
       from-blue-600
+      via-sky-600
       to-purple-600
-      px-8
-      py-4
       text-white
       shadow-lg
-      shadow-blue-500/20
-      hover:from-blue-500
-      hover:to-purple-500
+      shadow-sky-500/20
       hover:-translate-y-0.5
+      hover:shadow-xl
+      hover:shadow-sky-500/25
     `,
 
     secondary: `
-      rounded-2xl
+      bg-slate-900/90
+      text-slate-100
       border
-      border-zinc-800
-      bg-zinc-900
-      px-8
-      py-4
-      text-zinc-300
-      hover:border-zinc-700
-      hover:text-white
+      border-slate-800
+      shadow-md
+      shadow-slate-950/20
+      hover:border-slate-700
+      hover:bg-slate-800/95
       hover:-translate-y-0.5
     `,
 
     ghost: `
-      rounded-xl
-      px-4
-      py-2
-      text-zinc-400
+      bg-transparent
+      text-slate-300
       hover:text-white
+      hover:bg-white/5
+      hover:-translate-y-0.5
+      focus-visible:ring-blue-400/50
     `,
   };
 
+  const sharedIconClasses =
+    "text-base text-sky-100 transition-transform duration-200 ease-out group-hover:translate-x-1";
+  const buttonContent = (
+    <>
+      {children}
+      {icon && <FontAwesomeIcon icon={icon} className={sharedIconClasses} />}
+    </>
+  );
+
+  if (href) {
+    const isExternal = /^https?:\/\//.test(href);
+
+    return (
+      <a
+        href={href}
+        className={`${baseStyles} ${variants[variant]} ${className}`}
+        target={isExternal ? "_blank" : undefined}
+        rel={isExternal ? "noopener noreferrer" : undefined}
+      >
+        {buttonContent}
+      </a>
+    );
+  }
+
   return (
-    <a
-      href={href}
+    <button
+      type={type}
       className={`${baseStyles} ${variants[variant]} ${className}`}
     >
-      {children}
-
-      {icon && (
-        <FontAwesomeIcon icon={icon} className="text-xs text-blue-400" />
-      )}
-    </a>
+      {buttonContent}
+    </button>
   );
 }

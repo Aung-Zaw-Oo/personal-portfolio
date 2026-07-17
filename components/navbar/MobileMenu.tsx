@@ -80,7 +80,7 @@ export default function MobileMenu() {
         onClick={() => setOpen(true)}
         aria-label="Open navigation menu"
         aria-expanded={open}
-        className="text-xl text-zinc-300 transition hover:text-white"
+        className="flex h-11 w-11 items-center justify-center rounded-3xl border border-zinc-800 bg-zinc-950/90 text-xl text-zinc-300 transition duration-200 hover:border-zinc-700 hover:bg-zinc-900 hover:text-white focus:ring-2 focus:ring-blue-500/60 focus:outline-none"
       >
         <FontAwesomeIcon icon={faBars} />
       </button>
@@ -105,7 +105,7 @@ export default function MobileMenu() {
               initial="closed"
               animate="open"
               exit="closed"
-              className="fixed top-0 right-0 z-50 flex h-dvh min-h-dvh w-80 flex-col border-l border-zinc-800 bg-zinc-950 p-8"
+              className="fixed top-0 right-0 z-50 flex h-dvh min-h-dvh w-80 flex-col border-l border-zinc-800/70 bg-zinc-950/95 p-8 shadow-2xl shadow-black/30 backdrop-blur-xl"
             >
               {/* Header */}
               <div className="mb-12 flex items-center justify-between">
@@ -142,7 +142,7 @@ export default function MobileMenu() {
                 <a
                   href="#contact"
                   onClick={() => setOpen(false)}
-                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 py-3 font-medium text-white transition hover:bg-blue-500"
+                  className="flex w-full items-center justify-center gap-2 rounded-3xl bg-gradient-to-r from-blue-600 to-purple-600 py-3 font-medium text-white shadow-lg shadow-blue-500/20 transition duration-200 hover:from-blue-500 hover:to-purple-500"
                 >
                   Let's Talk
                   <FontAwesomeIcon icon={faArrowRight} className="text-sm" />

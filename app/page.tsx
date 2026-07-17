@@ -14,6 +14,7 @@ import TechMarquee from "@/components/sections/tech-marquee/TechMarquee";
 
 export default function Home() {
   const [prefillData, setPrefillData] = useState<{
+    subject: string;
     projectType: string;
     message: string;
   } | null>(null);

@@ -6,7 +6,11 @@ import ContactInfo from "./ContactInfo";
 import ContactForm from "./ContactForm";
 
 interface ContactProps {
-  prefillData?: { projectType: string; message: string } | null;
+  prefillData?: {
+    subject: string;
+    projectType: string;
+    message: string;
+  } | null;
 }
 
 // Orchestrator variants for smooth entry sequencing
