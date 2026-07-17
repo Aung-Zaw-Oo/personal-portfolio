@@ -114,6 +114,7 @@ export default function Navbar() {
                   <a
                     key={item.href}
                     href={item.href}
+                    aria-current={isActive ? "page" : undefined}
                     onMouseEnter={() => setHoveredIndex(index)}
                     className="group relative overflow-hidden rounded-2xl px-4 py-2 transition duration-200 hover:text-white"
                   >

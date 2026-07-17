@@ -11,12 +11,17 @@ interface Props {
 }
 
 export default function RangeControl({ label, value, setValue, items }: Props) {
+  const inputId = `${label
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "")}-range`;
+
   return (
     <div className="group/range">
       {/* Header */}
       <div className="mb-3 flex flex-col gap-2 text-sm sm:flex-row sm:items-center sm:justify-between">
         <label
-          id={`${label}-label`}
+          htmlFor={inputId}
           className="leading-snug text-zinc-300 transition-colors duration-300 group-hover/range:text-zinc-200"
         >
           {label}
@@ -45,8 +50,8 @@ export default function RangeControl({ label, value, setValue, items }: Props) {
         transition={{ type: "spring", stiffness: 400, damping: 25 }}
       >
         <input
+          id={inputId}
           type="range"
-          aria-labelledby={`${label}-label`}
           min="0"
           max={items.length - 1}
           value={value}

@@ -16,7 +16,11 @@ export default function CustomCursor() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    if (window.innerWidth < 1024) return;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    if (window.innerWidth < 1024 || prefersReducedMotion) return;
 
     setIsVisible(true);
 

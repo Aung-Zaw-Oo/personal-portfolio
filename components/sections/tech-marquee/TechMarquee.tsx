@@ -22,8 +22,11 @@ const items = [
 
 export default function TechMarquee() {
   return (
-    <section className="relative z-10 overflow-hidden border-y border-zinc-900 bg-zinc-950 py-12">
-      <div className="flex w-max animate-scroll gap-8 select-none">
+    <section
+      aria-label="Technology skills marquee"
+      className="relative z-10 overflow-hidden border-y border-zinc-900 bg-zinc-950 py-12"
+    >
+      <div className="flex w-max animate-scroll gap-8 select-none motion-reduce:animate-none">
         {[...items, ...items].map((item, index) => (
           <span
             key={index}
@@ -33,7 +36,8 @@ export default function TechMarquee() {
 
             <FontAwesomeIcon
               icon={faAsterisk}
-              className={`text-sm ${item.color} animate-spin-slow`}
+              className={`text-sm ${item.color} animate-spin-slow motion-reduce:animate-none`}
+              aria-hidden="true"
             />
           </span>
         ))}

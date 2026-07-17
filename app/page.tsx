@@ -21,7 +21,7 @@ export default function Home() {
 
   return (
     <div>
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <Hero></Hero>
         <TechMarquee></TechMarquee>
         <About></About>

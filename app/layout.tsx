@@ -37,6 +37,12 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${plusJakarta.variable} dark h-full scroll-smooth antialiased`}
     >
       <body className="flex min-h-full flex-col">
+        <a
+          href="#main-content"
+          className="sr-only rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white ring-2 ring-blue-400/60 focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50"
+        >
+          Skip to main content
+        </a>
         <ParticleBackground />
         <CustomCursor />
         <Navbar />

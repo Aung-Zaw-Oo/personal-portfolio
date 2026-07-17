@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   faBars,
@@ -13,6 +13,8 @@ import { navItems } from "./nav.data";
 
 export default function MobileMenu() {
   const [open, setOpen] = useState(false);
+  const openButtonRef = useRef<HTMLButtonElement | null>(null);
+  const closeButtonRef = useRef<HTMLButtonElement | null>(null);
 
   // Disable background scrolling while the mobile menu is open
   useEffect(() => {
@@ -21,9 +23,11 @@ export default function MobileMenu() {
     if (open) {
       document.body.style.overflow = "hidden";
       root.style.overflow = "hidden";
+      closeButtonRef.current?.focus();
     } else {
       document.body.style.overflow = "";
       root.style.overflow = "";
+      openButtonRef.current?.focus();
     }
 
     return () => {
@@ -77,9 +81,13 @@ export default function MobileMenu() {
     <>
       {/* Open Button */}
       <button
+        ref={openButtonRef}
         onClick={() => setOpen(true)}
         aria-label="Open navigation menu"
         aria-expanded={open}
+        aria-controls="mobile-navigation"
+        aria-haspopup="menu"
+        type="button"
         className="flex h-11 w-11 items-center justify-center rounded-3xl border border-zinc-800 bg-zinc-950/90 text-xl text-zinc-300 transition duration-200 hover:border-zinc-700 hover:bg-zinc-900 hover:text-white focus:ring-2 focus:ring-blue-500/60 focus:outline-none"
       >
         <FontAwesomeIcon icon={faBars} />
@@ -105,6 +113,10 @@ export default function MobileMenu() {
               initial="closed"
               animate="open"
               exit="closed"
+              id="mobile-navigation"
+              aria-modal="true"
+              role="dialog"
+              aria-label="Mobile navigation menu"
               className="fixed top-0 right-0 z-50 flex h-dvh min-h-dvh w-80 flex-col border-l border-zinc-800/70 bg-zinc-950/95 p-8 shadow-2xl shadow-black/30 backdrop-blur-xl"
             >
               {/* Header */}
@@ -112,9 +124,11 @@ export default function MobileMenu() {
                 <span className="text-lg font-bold text-white">Navigation</span>
 
                 <button
+                  ref={closeButtonRef}
                   onClick={() => setOpen(false)}
                   aria-label="Close navigation menu"
                   className="text-xl text-zinc-400 transition hover:text-white"
+                  type="button"
                 >
                   <FontAwesomeIcon icon={faXmark} />
                 </button>

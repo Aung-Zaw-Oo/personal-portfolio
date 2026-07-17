@@ -24,6 +24,12 @@ export default function ParticleBackground() {
   });
 
   useEffect(() => {
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    if (prefersReducedMotion) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -92,7 +98,7 @@ export default function ParticleBackground() {
         if (mouse.x !== null && mouse.y !== null) {
           const dx = mouse.x - particle.x;
           const dy = mouse.y - particle.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
+          const distance = Math.hypot(dx, dy);
 
           if (distance < mouse.radius) {
             const strength = (1 - distance / mouse.radius) * 0.06;
@@ -110,11 +116,12 @@ export default function ParticleBackground() {
         ctx.shadowBlur = 0;
       });
 
-      for (let a = 0; a < particles.length; a += 1) {
-        for (let b = a + 1; b < particles.length; b += 1) {
+      const activeParticles = Math.min(particles.length, 60);
+      for (let a = 0; a < activeParticles; a += 1) {
+        for (let b = a + 1; b < activeParticles; b += 1) {
           const dx = particles[a].x - particles[b].x;
           const dy = particles[a].y - particles[b].y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
+          const distance = Math.hypot(dx, dy);
 
           if (distance < 110) {
             const alpha = (1 - distance / 110) * 0.11;

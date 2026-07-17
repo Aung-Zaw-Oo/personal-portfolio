@@ -195,12 +195,12 @@ export default function ProjectEstimator({ onPrefill }: ProjectEstimatorProps) {
             {/* LEFT COLUMN: User selections */}
             <div className="space-y-6 sm:space-y-8 lg:col-span-7">
               <div role="radiogroup" aria-labelledby="project-type-label">
-                <label
+                <div
                   id="project-type-label"
                   className="mb-3 block text-sm font-medium text-zinc-300"
                 >
                   What type of project are we building together?
-                </label>
+                </div>
                 <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                   {projectOptions.map((option) => {
                     const isSelected = projectType === option.id;

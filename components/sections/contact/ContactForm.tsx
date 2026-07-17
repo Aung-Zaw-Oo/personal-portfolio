@@ -107,10 +107,15 @@ export default function ContactForm({ prefillData }: ContactFormProps) {
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           <div className="flex flex-col">
+            <label htmlFor="contact-name" className="sr-only">
+              Your Name
+            </label>
             <input
+              id="contact-name"
+              name="name"
               type="text"
-              aria-label="Your Name"
               placeholder="Your Name"
+              autoComplete="name"
               value={formData.name}
               onChange={(e) =>
                 setFormData((prev) => ({ ...prev, name: e.target.value }))
@@ -121,10 +126,15 @@ export default function ContactForm({ prefillData }: ContactFormProps) {
           </div>
 
           <div className="flex flex-col">
+            <label htmlFor="contact-email" className="sr-only">
+              Email Address
+            </label>
             <input
+              id="contact-email"
+              name="email"
               type="email"
-              aria-label="Email Address"
               placeholder="Email Address"
+              autoComplete="email"
               value={formData.email}
               onChange={(e) =>
                 setFormData((prev) => ({ ...prev, email: e.target.value }))
@@ -137,10 +147,15 @@ export default function ContactForm({ prefillData }: ContactFormProps) {
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           <div className="flex flex-col">
+            <label htmlFor="contact-project-type" className="sr-only">
+              Project Type
+            </label>
             <input
+              id="contact-project-type"
+              name="projectType"
               type="text"
-              aria-label="Project Type"
               placeholder="Project Type"
+              autoComplete="off"
               value={formData.projectType}
               onChange={(e) =>
                 setFormData((prev) => ({
@@ -153,10 +168,15 @@ export default function ContactForm({ prefillData }: ContactFormProps) {
           </div>
 
           <div className="flex flex-col">
+            <label htmlFor="contact-subject" className="sr-only">
+              Subject
+            </label>
             <input
+              id="contact-subject"
+              name="subject"
               type="text"
-              aria-label="Subject"
               placeholder="Subject"
+              autoComplete="off"
               value={formData.subject}
               onChange={(e) =>
                 setFormData((prev) => ({ ...prev, subject: e.target.value }))
@@ -167,10 +187,15 @@ export default function ContactForm({ prefillData }: ContactFormProps) {
         </div>
 
         <div className="flex flex-col">
+          <label htmlFor="contact-message" className="sr-only">
+            Tell me about your project
+          </label>
           <textarea
+            id="contact-message"
+            name="message"
             rows={5}
-            aria-label="Tell me about your project"
             placeholder="Tell me about your project..."
+            autoComplete="off"
             value={formData.message}
             onChange={(e) =>
               setFormData((prev) => ({ ...prev, message: e.target.value }))
@@ -181,13 +206,21 @@ export default function ContactForm({ prefillData }: ContactFormProps) {
         </div>
 
         {status === "success" && (
-          <div className="rounded-2xl border border-green-500/30 bg-green-500/10 p-4 text-sm text-green-200">
+          <div
+            role="status"
+            aria-live="polite"
+            className="rounded-2xl border border-green-500/30 bg-green-500/10 p-4 text-sm text-green-200"
+          >
             Your message was sent successfully. I’ll get back to you shortly.
           </div>
         )}
 
         {status === "error" && errorMessage && (
-          <div className="rounded-2xl border border-rose-500/30 bg-rose-500/10 p-4 text-sm text-rose-200">
+          <div
+            role="status"
+            aria-live="polite"
+            className="rounded-2xl border border-rose-500/30 bg-rose-500/10 p-4 text-sm text-rose-200"
+          >
             {errorMessage}
           </div>
         )}

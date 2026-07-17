@@ -29,15 +29,19 @@ export default function ProjectPreview({
       />
 
       {/* Hover Overlay */}
-      <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/80 via-black/40 to-black/20 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+      <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/80 via-black/40 to-black/20 opacity-0 transition-all duration-500 group-focus-within:opacity-100 group-hover:opacity-100">
         <a
           href={liveUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex translate-y-4 items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 hover:scale-105"
+          aria-label={`View website for ${title}`}
+          className="flex translate-y-4 items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black opacity-0 transition-all duration-500 group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 hover:scale-105"
         >
           View Website
-          <i className="fa-solid fa-arrow-up-right-from-square text-xs" />
+          <i
+            className="fa-solid fa-arrow-up-right-from-square text-xs"
+            aria-hidden="true"
+          />
         </a>
       </div>
 
