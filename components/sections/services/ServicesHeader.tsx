@@ -56,7 +56,7 @@ export default function ServicesHeader() {
       {/* Description */}
       <motion.p
         variants={itemVariants}
-        className="text-base leading-relaxed font-light text-zinc-400"
+        className="text-base leading-relaxed font-light text-slate-300"
       >
         Designed to maximize client outcomes. Elevating your vision with
         scalable strategies, immaculate frontends, and dynamic engineering

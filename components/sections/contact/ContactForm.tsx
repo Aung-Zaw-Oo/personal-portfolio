@@ -102,7 +102,7 @@ export default function ContactForm({ prefillData }: ContactFormProps) {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.7, ease: "easeOut" }}
-      className="rounded-3xl border border-zinc-800 bg-zinc-900/20 p-8 backdrop-blur-md transition-all duration-500 hover:border-violet-500/30 hover:shadow-2xl hover:shadow-violet-500/10"
+      className="rounded-3xl border border-slate-800/80 bg-slate-900/35 p-8 backdrop-blur-md transition-all duration-500 hover:border-violet-500/30 hover:shadow-2xl hover:shadow-violet-500/10"
     >
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
@@ -201,7 +201,7 @@ export default function ContactForm({ prefillData }: ContactFormProps) {
               setFormData((prev) => ({ ...prev, message: e.target.value }))
             }
             required
-            className="w-full resize-none rounded-xl border border-zinc-800 bg-zinc-950 px-4 py-3 text-sm text-white transition-all duration-300 outline-none placeholder:text-zinc-600 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20"
+            className="w-full resize-none rounded-xl border border-slate-700/70 bg-slate-950/90 px-4 py-3 text-sm text-slate-100 transition-all duration-300 outline-none placeholder:text-slate-400 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20"
           />
         </div>
 

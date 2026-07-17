@@ -69,7 +69,7 @@ export default function Hero() {
             {/* Availability Badge */}
             <motion.div
               variants={itemVariants}
-              className="inline-flex items-center gap-3 rounded-full border border-zinc-800 bg-zinc-900/80 px-4 py-1.5 text-sm text-zinc-300"
+              className="inline-flex items-center gap-3 rounded-full border border-slate-700/70 bg-slate-950/80 px-4 py-1.5 text-sm text-slate-200"
             >
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
@@ -94,7 +94,7 @@ export default function Hero() {
             {/* Description */}
             <motion.p
               variants={itemVariants}
-              className="max-w-xl text-base leading-relaxed text-zinc-400 sm:text-lg md:text-xl"
+              className="max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg md:text-xl"
             >
               Hi, I'm <strong className="text-white">Aung Zaw Oo</strong>, a
               Full Stack Developer building modern web applications with clean
@@ -130,12 +130,12 @@ export default function Hero() {
 
               <div>
                 <p className="font-heading text-3xl font-bold">3</p>
-                <p className="text-xs text-zinc-500 uppercase">Projects</p>
+                <p className="text-xs text-slate-400 uppercase">Projects</p>
               </div>
 
               <div>
                 <p className="font-heading text-3xl font-bold">100%</p>
-                <p className="text-xs text-zinc-500 uppercase">Dedication</p>
+                <p className="text-xs text-slate-400 uppercase">Dedication</p>
               </div>
             </motion.div>
           </motion.div>

@@ -57,7 +57,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         </h3>
 
         {/* Description */}
-        <p className="mb-6 line-clamp-3 min-h-[72px] text-sm leading-relaxed font-light text-zinc-400">
+        <p className="mb-6 line-clamp-3 min-h-[72px] text-sm leading-relaxed font-light text-slate-300">
           {project.description}
         </p>
 

@@ -107,7 +107,7 @@ export default function Footer() {
                 <span className="text-violet-500">.</span>
               </h3>
 
-              <p className="mt-2 max-w-md text-sm leading-relaxed text-zinc-400">
+              <p className="mt-2 max-w-md text-sm leading-relaxed text-slate-300">
                 Building modern web experiences with clean interfaces, scalable
                 architecture, and thoughtful user experiences.
               </p>
