@@ -1,4 +1,4 @@
-export type ProjectType = "webapp" | "ecommerce" | "landing" | "custom";
+export type ProjectType = "frontend" | "backend" | "fullstack" | "custom";
 
 export interface ProjectOption {
   id: ProjectType;

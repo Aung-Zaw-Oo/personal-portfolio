@@ -9,10 +9,32 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoneyBillTransfer } from "@fortawesome/free-solid-svg-icons";
 
 const projectOptions: ProjectOption[] = [
-  { id: "webapp", label: "Custom Web App / Portal", multiplier: 1 },
-  { id: "ecommerce", label: "E-commerce Online Store", multiplier: 1.2 },
-  { id: "landing", label: "Marketing Landing Page", multiplier: 0.6 },
-  { id: "custom", label: "Complex Custom Software", multiplier: 1.5 },
+  {
+    id: "frontend",
+    label: "Frontend-only Website / Landing Page",
+    multiplier: 0.75,
+  },
+  { id: "backend", label: "Backend/API Platform", multiplier: 1.05 },
+  { id: "fullstack", label: "Fullstack App (UI + Backend)", multiplier: 1.35 },
+  { id: "custom", label: "Custom Web Experience / Portal", multiplier: 1.6 },
+];
+
+const featureOptions = [
+  {
+    id: "responsive",
+    label: "Responsive design & polished UI",
+    multiplier: 0.08,
+  },
+  {
+    id: "authentication",
+    label: "User accounts & authentication",
+    multiplier: 0.12,
+  },
+  { id: "payments", label: "Payments / checkout flow", multiplier: 0.14 },
+  { id: "admin", label: "Admin/dashboard tools", multiplier: 0.12 },
+  { id: "integrations", label: "Third-party integrations", multiplier: 0.1 },
+  { id: "analytics", label: "Analytics & reporting", multiplier: 0.08 },
+  { id: "cms", label: "Content management system", multiplier: 0.1 },
 ];
 
 const complexityLevels: RangeValue[] = [
@@ -48,11 +70,16 @@ const timelineLevels: RangeValue[] = [
 ];
 
 interface ProjectEstimatorProps {
-  onPrefill?: (data: { projectType: string; message: string }) => void;
+  onPrefill?: (data: {
+    subject: string;
+    projectType: string;
+    message: string;
+  }) => void;
 }
 
 export default function ProjectEstimator({ onPrefill }: ProjectEstimatorProps) {
-  const [projectType, setProjectType] = useState<ProjectType>("webapp");
+  const [projectType, setProjectType] = useState<ProjectType>("frontend");
+  const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
   const [complexity, setComplexity] = useState(1);
   const [timeline, setTimeline] = useState(1);
 
@@ -96,20 +123,30 @@ export default function ProjectEstimator({ onPrefill }: ProjectEstimatorProps) {
     projectOptions.find((item) => item.id === projectType) ?? projectOptions[0];
   const selectedComplexity = complexityLevels[complexity];
   const selectedTimeline = timelineLevels[timeline];
+  const selectedFeatureOptions = featureOptions.filter((feature) =>
+    selectedFeatures.includes(feature.id),
+  );
 
   const estimate = useMemo(() => {
     const complexityData = complexityLevels[complexity];
     const timelineData = timelineLevels[timeline];
+    const featureMultiplier =
+      1 +
+      selectedFeatureOptions.reduce(
+        (sum, feature) => sum + feature.multiplier,
+        0,
+      );
 
     const basePrice = 500;
     const totalInUSD =
       basePrice *
       selectedProject.multiplier *
       complexityData.multiplier *
-      timelineData.multiplier;
+      timelineData.multiplier *
+      featureMultiplier;
 
-    let min = Math.round(totalInUSD * 0.8);
-    let max = Math.round(totalInUSD * 1.3);
+    let min = Math.round(totalInUSD * 0.78);
+    let max = Math.round(totalInUSD * 1.2);
 
     if (currency === "MMK") {
       min = min * exchangeRate;
@@ -133,6 +170,7 @@ export default function ProjectEstimator({ onPrefill }: ProjectEstimatorProps) {
     timeline,
     currency,
     exchangeRate,
+    selectedFeatureOptions,
   ]);
 
   return (
@@ -178,7 +216,19 @@ export default function ProjectEstimator({ onPrefill }: ProjectEstimatorProps) {
                             : "border-zinc-800 bg-zinc-900/40 text-zinc-400 hover:border-zinc-700 hover:text-white"
                         }`}
                       >
-                        <span className="font-medium">{option.label}</span>
+                        <div className="space-y-1">
+                          <span className="font-medium">{option.label}</span>
+                          <span className="text-[11px] text-zinc-500">
+                            {option.id === "frontend" &&
+                              "Landing pages, microsites, UI polish."}
+                            {option.id === "backend" &&
+                              "APIs, data processing, server logic."}
+                            {option.id === "fullstack" &&
+                              "Frontend + backend with database."}
+                            {option.id === "custom" &&
+                              "Bespoke workflows and integrations."}
+                          </span>
+                        </div>
                         {isSelected && (
                           <motion.span
                             initial={{ scale: 0.5, opacity: 0 }}
@@ -188,6 +238,53 @@ export default function ProjectEstimator({ onPrefill }: ProjectEstimatorProps) {
                             ✓
                           </motion.span>
                         )}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-zinc-800/70 bg-zinc-900/60 p-4 text-sm text-zinc-300 shadow-inner backdrop-blur-sm">
+                <p className="mb-3 font-semibold text-white">
+                  Pick feature groups you expect in this project
+                </p>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {featureOptions.map((feature) => {
+                    const isSelected = selectedFeatures.includes(feature.id);
+                    return (
+                      <button
+                        key={feature.id}
+                        type="button"
+                        onClick={() => {
+                          setSelectedFeatures((current) =>
+                            current.includes(feature.id)
+                              ? current.filter((id) => id !== feature.id)
+                              : [...current, feature.id],
+                          );
+                        }}
+                        className={`flex flex-col items-start gap-2 rounded-xl border px-4 py-3 text-left text-sm transition-all duration-200 ${
+                          isSelected
+                            ? "border-blue-500/40 bg-blue-500/10 text-white"
+                            : "border-zinc-800 bg-zinc-900/40 text-zinc-400 hover:border-zinc-700 hover:text-white"
+                        }`}
+                      >
+                        <span className="font-medium">{feature.label}</span>
+                        <span className="text-[11px] text-zinc-500">
+                          {feature.id === "authentication" &&
+                            "Logins, session security, and user accounts."}
+                          {feature.id === "payments" &&
+                            "Checkout, billing, invoicing, and subscriptions."}
+                          {feature.id === "admin" &&
+                            "Internal controls, moderation or admin tools."}
+                          {feature.id === "integrations" &&
+                            "API connections, webhooks, or external services."}
+                          {feature.id === "analytics" &&
+                            "Dashboards, usage metrics, and reporting."}
+                          {feature.id === "cms" &&
+                            "Content updates via a simple authoring UI."}
+                          {feature.id === "responsive" &&
+                            "Mobile-first layout and device polish."}
+                        </span>
                       </button>
                     );
                   })}
@@ -292,11 +389,26 @@ export default function ProjectEstimator({ onPrefill }: ProjectEstimatorProps) {
               <button
                 className="w-full rounded-xl bg-violet-600 px-4 py-4 text-sm font-semibold text-white transition-all hover:bg-violet-500 active:scale-[0.99] sm:text-base"
                 onClick={() => {
+                  const featuresSummary =
+                    selectedFeatures.length > 0
+                      ? selectedFeatures
+                          .map(
+                            (id) =>
+                              featureOptions.find(
+                                (feature) => feature.id === id,
+                              )?.label ?? id,
+                          )
+                          .join(", ")
+                      : "Core scope only";
+
                   onPrefill?.({
-                    projectType: `${selectedProject.label} • ${selectedComplexity.label}`,
+                    subject: `Estimate Request: ${selectedProject.label}`,
+                    projectType: `${selectedProject.label} • ${selectedComplexity.label} • ${selectedTimeline.label}`,
                     message: [
                       `Project Type: ${selectedProject.label}`,
                       `Complexity: ${selectedComplexity.label}`,
+                      `Timeline: ${selectedTimeline.label}`,
+                      `Feature groups: ${featuresSummary}`,
                       `Estimated Budget: ${estimate.price}`,
                       `Conversion Baseline Rate: 1 USD = ${exchangeRate} MMK`,
                       "",
