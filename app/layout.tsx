@@ -4,6 +4,8 @@ import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import ParticleBackground from "@/components/effects/ParticleBackground";
 import CustomCursor from "@/components/effects/CustomCursor";
+import ScrollToTopButton from "@/components/ui/ScrollToTopButton";
+import SectionPill from "@/components/ui/SectionPill";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -37,7 +39,9 @@ export default function RootLayout({
         <ParticleBackground />
         <CustomCursor />
         <Navbar />
+        <SectionPill />
         {children}
+        <ScrollToTopButton />
       </body>
     </html>
   );
