@@ -346,7 +346,7 @@ export default function ProjectEstimator({ onPrefill }: ProjectEstimatorProps) {
                     <p className="mb-2 text-xs font-semibold tracking-widest text-zinc-500 uppercase">
                       Estimated Budget Range
                     </p>
-                    <div className="relative h-12 overflow-hidden">
+                    <div className="relative min-h-[3rem] overflow-visible">
                       <AnimatePresence mode="wait">
                         <motion.div
                           key={estimate.price}
@@ -354,7 +354,7 @@ export default function ProjectEstimator({ onPrefill }: ProjectEstimatorProps) {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: -10 }}
                           transition={{ duration: 0.15 }}
-                          className="absolute inset-0 bg-gradient-to-r from-white via-zinc-200 to-zinc-400 bg-clip-text text-xl leading-none font-extrabold text-transparent sm:text-2xl lg:text-3xl"
+                          className="bg-gradient-to-r from-white via-zinc-200 to-zinc-400 bg-clip-text text-xl font-extrabold break-words whitespace-normal text-transparent sm:text-2xl lg:text-3xl"
                         >
                           {estimate.price}
                         </motion.div>
