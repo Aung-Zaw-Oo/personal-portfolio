@@ -1,3 +1,5 @@
+// components\sections\about\AboutImage.tsx
+
 "use client";
 
 import { motion } from "framer-motion";
