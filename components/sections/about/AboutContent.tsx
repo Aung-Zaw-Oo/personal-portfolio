@@ -4,11 +4,7 @@ import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AboutCard from "./AboutCard";
 import AboutQuote from "./AboutQuote";
-import {
-  faCode,
-  faDatabase,
-  faBriefcase,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCode, faDatabase, faBriefcase } from "@fortawesome/free-solid-svg-icons";
 
 export default function AboutContent() {
   // Stagger configurations for container structures

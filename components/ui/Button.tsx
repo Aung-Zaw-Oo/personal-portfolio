@@ -9,6 +9,7 @@ interface ButtonProps {
   icon?: IconDefinition;
   variant?: ButtonVariant;
   href?: string;
+  download?: boolean | string;
   className?: string;
   type?: "button" | "submit" | "reset";
 }
@@ -18,6 +19,7 @@ export default function Button({
   icon,
   variant = "primary",
   href,
+  download,
   className = "",
   type = "button",
 }: ButtonProps) {
@@ -96,9 +98,10 @@ export default function Button({
     return (
       <a
         href={href}
+        download={download}
         className={`${baseStyles} ${variants[variant]} ${className}`}
-        target={isExternal ? "_blank" : undefined}
-        rel={isExternal ? "noopener noreferrer" : undefined}
+        target={isExternal && !download ? "_blank" : undefined}
+        rel={isExternal && !download ? "noopener noreferrer" : undefined}
       >
         {buttonContent}
       </a>
