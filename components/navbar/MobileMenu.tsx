@@ -6,6 +6,7 @@ import {
   faBars,
   faXmark,
   faArrowRight,
+  faDownload,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -152,7 +153,16 @@ export default function MobileMenu() {
               </nav>
 
               {/* CTA */}
-              <motion.div variants={itemVariants} className="mt-auto">
+              <motion.div variants={itemVariants} className="mt-auto space-y-3">
+                <a
+                  href="files/aung-zaw-oo-resume.pdf"
+                  download="aung-zaw-oo-resume.pdf"
+                  className="flex w-full items-center justify-center gap-2 rounded-3xl border border-zinc-800 bg-zinc-900/90 py-3 font-medium text-zinc-100 shadow-md shadow-black/20 transition duration-200 hover:border-zinc-700 hover:bg-zinc-800/95"
+                >
+                  Download CV
+                  <FontAwesomeIcon icon={faDownload} className="text-sm" />
+                </a>
+
                 <a
                   href="#contact"
                   onClick={() => setOpen(false)}
@@ -162,7 +172,7 @@ export default function MobileMenu() {
                   <FontAwesomeIcon icon={faArrowRight} className="text-sm" />
                 </a>
 
-                <p className="mt-5 text-center text-xs text-zinc-500">
+                <p className="mt-2 text-center text-xs text-zinc-500">
                   © 2026 Aung Zaw Oo
                 </p>
               </motion.div>

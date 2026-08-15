@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faDownload } from "@fortawesome/free-solid-svg-icons";
 
 import MobileMenu from "./MobileMenu";
 import { navItems } from "./nav.data";
@@ -140,7 +140,16 @@ export default function Navbar() {
             </div>
 
             {/* CTA */}
-            <div className="hidden shrink-0 md:flex">
+            <div className="hidden shrink-0 items-center gap-3 md:flex">
+              <Button
+                variant="secondary"
+                href="files/aung-zaw-oo-resume.pdf"
+                download="aung-zaw-oo-resume.pdf"
+                icon={faDownload}
+              >
+                Download CV
+              </Button>
+
               <Button variant="primary" href="#contact" icon={faArrowRight}>
                 {"Let's Talk"}
               </Button>
