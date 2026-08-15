@@ -1,80 +1,76 @@
+// components\sections\projects\projects.data.ts
+
 import { Project } from "./types";
 
 export const projects: Project[] = [
   {
     id: 1,
-    title: "Mare Coastal Seafood",
-    category: "frontend",
-    categoryLabel: "Immersive Web Experience",
-    year: "2026",
-    description:
-      "A high-end restaurant digital experience built to capture coastal atmosphere. Features immersive WebGL wave graphics, dynamic menu storytelling, and smooth reservation transitions.",
-    image:
-      "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=1200&q=80",
-    tech: [
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Framer Motion",
-      "Three.js",
-    ],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
-  },
-  {
-    id: 2,
-    title: "TalentFlow Marketplace",
-    category: "fullstack",
-    categoryLabel: "Freelance Platform",
-    year: "2026",
-    description:
-      "A modern freelance ecosystem connecting elite developers with high-growth startups. Features real-time workspace collaboration, Escrow contract payouts, and interactive project trackers.",
-    image:
-      "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1200&q=80",
-    tech: ["Next.js", "TypeScript", "Node.js", "PostgreSQL", "Socket.io"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
-  },
-  {
-    id: 3,
-    title: "Aura Analytics Dash",
-    category: "saas",
-    categoryLabel: "B2B SaaS Platform",
-    year: "2026",
-    description:
-      "A real-time telemetry dashboard designed for high-traffic infrastructure. Synthesizes millions of incoming data points into lightning-fast, high-fidelity SVG/Canvas charts.",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-    tech: ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "D3.js"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
-  },
-  {
-    id: 4,
-    title: "Veloce Minimalist Gear",
+    title: "E-Commerce Platform",
     category: "ecommerce",
     categoryLabel: "E-Commerce Experience",
     year: "2026",
     description:
-      "A performance athletics storefront built for maximum speed. Features an ultra-snappy bag drawer, dynamic inventory updates, and visual, gesture-based size grids.",
+      "A full-stack e-commerce platform built with a development team at O-Technique Myanmar International. Contributed to the product catalog, shopping cart, and checkout flow, working across React/Next.js front-end and Node.js/NestJS back-end services.",
     image:
       "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=80",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Stripe"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
+    tech: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Node.js",
+      "NestJS",
+    ],
+    liveUrl: "#",
+    githubUrl: "#",
   },
   {
-    id: 5,
-    title: "Synthetix Code Editor",
-    category: "frontend",
-    categoryLabel: "Developer Tooling",
+    id: 2,
+    title: "ERP & CRM Systems",
+    category: "fullstack",
+    categoryLabel: "Enterprise Systems",
     year: "2026",
     description:
-      "A fully featured, web-based IDE experience built with optimized performance. Combines low-latency key bindings with virtualized scroll rendering for massive source files.",
+      "Enterprise Resource Planning and Customer Relationship Management modules built as part of a full-stack team. Focused on internal business process management and customer data tracking, translating business requirements into working full-stack features.",
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "Node.js",
+      "NestJS",
+      "Laravel",
+      "PostgreSQL",
+    ],
+    liveUrl: "#",
+    githubUrl: "#",
+  },
+  {
+    id: 3,
+    title: "Content Management System",
+    category: "frontend",
+    categoryLabel: "CMS Platform",
+    year: "2026",
+    description:
+      "A content management system built to support content creation, editing, and publishing workflows. Built responsive front-end interfaces with React, Next.js, and Tailwind CSS as part of the O-Technique development team.",
     image:
       "https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&w=1200&q=80",
-    tech: ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "Monaco"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
+    tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Laravel"],
+    liveUrl: "#",
+    githubUrl: "#",
+  },
+  {
+    id: 4,
+    title: "Portal & Dashboard Applications",
+    category: "saas",
+    categoryLabel: "Data Dashboard",
+    year: "2026",
+    description:
+      "Data-driven dashboard views and user portals built with React and Next.js front ends. Drew on a background in banking data analysis and reporting to help shape clear, usable data presentation for end users.",
+    image:
+      "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1200&q=80",
+    tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "MySQL"],
+    liveUrl: "#",
+    githubUrl: "#",
   },
 ];

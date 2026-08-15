@@ -158,7 +158,7 @@ export default function MobileMenu() {
                   onClick={() => setOpen(false)}
                   className="flex w-full items-center justify-center gap-2 rounded-3xl bg-gradient-to-r from-blue-600 to-purple-600 py-3 font-medium text-white shadow-lg shadow-blue-500/20 transition duration-200 hover:from-blue-500 hover:to-purple-500"
                 >
-                  Let's Talk
+                  {"Let's Talk"}
                   <FontAwesomeIcon icon={faArrowRight} className="text-sm" />
                 </a>
 

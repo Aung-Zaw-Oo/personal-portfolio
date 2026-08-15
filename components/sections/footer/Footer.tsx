@@ -15,7 +15,6 @@ import {
 import {
   faGithub,
   faLinkedin,
-  faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import Container from "@/components/ui/Container";
 
@@ -75,7 +74,11 @@ export default function Footer() {
   const [currentYear, setCurrentYear] = useState<string>("2026");
 
   useEffect(() => {
-    setCurrentYear(new Date().getFullYear().toString());
+    const year = new Date().getFullYear().toString();
+    const frame = requestAnimationFrame(() => {
+      setCurrentYear(year);
+    });
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   return (

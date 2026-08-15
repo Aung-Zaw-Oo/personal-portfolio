@@ -52,35 +52,35 @@ export default function CodeTerminal({
       </div>
 
       <div className="p-6 font-mono text-xs leading-relaxed text-zinc-300">
-        <p className="text-emerald-400">import Developer from "@core/human";</p>
+        <p className="text-emerald-400">import Developer from &quot;@core/human&quot;;</p>
 
         <p className="mt-3 text-zinc-500">
-          // Transforming ideas into digital solutions
+          {"// Transforming ideas into digital solutions"}
         </p>
 
         <p className="mt-3 text-purple-400">
-          const {variableName} = new Developer({"{"}
+          const {variableName} = new Developer({"{"})
         </p>
 
         <div className="space-y-1 border-l border-zinc-800 pl-4">
           <p>
-            role: <span className="text-cyan-400">"{data.role}"</span>,
+            role: <span className="text-cyan-400">&quot;{data.role}&quot;</span>,
           </p>
           <p>
-            frontend: <span className="text-blue-400">"{data.frontend}"</span>,
+            frontend: <span className="text-blue-400">&quot;{data.frontend}&quot;</span>,
           </p>
           <p>
-            backend: <span className="text-purple-400">"{data.backend}"</span>,
+            backend: <span className="text-purple-400">&quot;{data.backend}&quot;</span>,
           </p>
           <p>
             database:{" "}
-            <span className="text-emerald-400">"{data.database}"</span>,
+            <span className="text-emerald-400">&quot;{data.database}&quot;</span>,
           </p>
           <p>
-            focus: <span className="text-cyan-400">"{data.focus}"</span>,
+            focus: <span className="text-cyan-400">&quot;{data.focus}&quot;</span>,
           </p>
           <p>
-            status: <span className="text-emerald-400">"{data.status}"</span>
+            status: <span className="text-emerald-400">&quot;{data.status}&quot;</span>
           </p>
         </div>
 

@@ -142,7 +142,7 @@ export default function Navbar() {
             {/* CTA */}
             <div className="hidden shrink-0 md:flex">
               <Button variant="primary" href="#contact" icon={faArrowRight}>
-                Let's Talk
+                {"Let's Talk"}
               </Button>
             </div>
 

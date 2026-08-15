@@ -20,9 +20,12 @@ export default function CustomCursor() {
       "(prefers-reduced-motion: reduce)",
     ).matches;
 
-    if (window.innerWidth < 1024 || prefersReducedMotion) return;
-
-    setIsVisible(true);
+    let frameId: number | null = null;
+    if (window.innerWidth >= 1024 && !prefersReducedMotion) {
+      frameId = requestAnimationFrame(() => {
+        setIsVisible(true);
+      });
+    }
 
     const handlePointerMove = (event: PointerEvent) => {
       targetRef.current = { x: event.clientX, y: event.clientY };
@@ -69,6 +72,9 @@ export default function CustomCursor() {
       window.removeEventListener("pointerout", handlePointerOver);
       window.removeEventListener("mouseleave", hideCursor);
       window.removeEventListener("mouseenter", showCursor);
+      if (frameId !== null) {
+        window.cancelAnimationFrame(frameId);
+      }
       if (animationFrameId.current) {
         window.cancelAnimationFrame(animationFrameId.current);
       }

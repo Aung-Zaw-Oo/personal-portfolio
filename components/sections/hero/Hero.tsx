@@ -5,6 +5,7 @@ import Container from "@/components/ui/Container";
 import CodeTerminal from "./CodeTerminal";
 import Button from "@/components/ui/Button";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { projects } from "@/components/sections/projects/projects.data";
 
 export default function Hero() {
   // Container variant to handle staggered children animations
@@ -96,7 +97,7 @@ export default function Hero() {
               variants={itemVariants}
               className="max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg md:text-xl"
             >
-              Hi, I'm <strong className="text-white">Aung Zaw Oo</strong>, a
+              {"Hi, I'm"} <strong className="text-white">Aung Zaw Oo</strong>, a
               Full Stack Developer building modern web applications with clean
               interfaces, scalable architecture, and meaningful user
               experiences.
@@ -129,7 +130,7 @@ export default function Hero() {
               </div>
 
               <div>
-                <p className="font-heading text-3xl font-bold">3</p>
+                <p className="font-heading text-3xl font-bold">{projects.length}</p>
                 <p className="text-xs text-slate-400 uppercase">Projects</p>
               </div>
 

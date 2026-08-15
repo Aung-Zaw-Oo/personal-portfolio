@@ -7,7 +7,7 @@ export default function ContactInfo() {
   return (
     <div>
       <p className="mb-2 text-sm font-semibold tracking-widest text-violet-400 uppercase">
-        Let's Connect
+        {"Let's Connect"}
       </p>
 
       <h2 className="mb-6 text-4xl font-bold tracking-tight text-white">

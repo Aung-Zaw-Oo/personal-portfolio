@@ -26,12 +26,15 @@ export default function ContactForm({ prefillData }: ContactFormProps) {
 
   useEffect(() => {
     if (prefillData) {
-      setFormData((prev) => ({
-        ...prev,
-        subject: prefillData.subject,
-        projectType: prefillData.projectType,
-        message: prefillData.message,
-      }));
+      const frame = requestAnimationFrame(() => {
+        setFormData((prev) => ({
+          ...prev,
+          subject: prefillData.subject,
+          projectType: prefillData.projectType,
+          message: prefillData.message,
+        }));
+      });
+      return () => cancelAnimationFrame(frame);
     }
   }, [prefillData]);
 
