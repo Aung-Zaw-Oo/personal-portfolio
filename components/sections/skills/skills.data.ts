@@ -3,6 +3,7 @@ import {
   faServer,
   faDatabase,
   faScrewdriverWrench,
+  faChartLine,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
@@ -40,19 +41,23 @@ export const skills: SkillCategory[] = [
     skills: [
       {
         name: "React",
-        level: "Advanced",
+        level: "Proficient",
       },
       {
         name: "Next.js",
-        level: "Advanced",
+        level: "Proficient",
       },
       {
         name: "TypeScript",
-        level: "Intermediate",
+        level: "Working Knowledge",
       },
       {
         name: "Tailwind CSS",
-        level: "Advanced",
+        level: "Proficient",
+      },
+      {
+        name: "React Native",
+        level: "Familiar",
       },
     ],
   },
@@ -70,19 +75,23 @@ export const skills: SkillCategory[] = [
     skills: [
       {
         name: "Node.js",
-        level: "Advanced",
+        level: "Proficient",
       },
       {
         name: "NestJS",
-        level: "Intermediate",
+        level: "Working Knowledge",
+      },
+      {
+        name: "Laravel",
+        level: "Working Knowledge",
       },
       {
         name: "REST APIs",
-        level: "Advanced",
+        level: "Proficient",
       },
       {
         name: "Authentication",
-        level: "Intermediate",
+        level: "Working Knowledge",
       },
     ],
   },
@@ -100,19 +109,19 @@ export const skills: SkillCategory[] = [
     skills: [
       {
         name: "PostgreSQL",
-        level: "Advanced",
+        level: "Proficient",
       },
       {
         name: "MySQL",
-        level: "Advanced",
+        level: "Proficient",
       },
       {
         name: "Database Design",
-        level: "Intermediate",
+        level: "Working Knowledge",
       },
       {
         name: "SQL Optimization",
-        level: "Intermediate",
+        level: "Familiar",
       },
     ],
   },
@@ -130,7 +139,7 @@ export const skills: SkillCategory[] = [
     skills: [
       {
         name: "Git & GitHub",
-        level: "Advanced",
+        level: "Proficient",
       },
       {
         name: "CMS Development",
@@ -142,7 +151,41 @@ export const skills: SkillCategory[] = [
       },
       {
         name: "Responsive Design",
-        level: "Advanced",
+        level: "Proficient",
+      },
+      {
+        name: "PHP",
+        level: "Working Knowledge",
+      },
+    ],
+  },
+
+  {
+    title: "Business & Data",
+    icon: faChartLine,
+    theme: {
+      icon: "text-rose-400",
+      bg: "bg-rose-500/10",
+      level: "text-rose-400",
+      hover: "hover:border-rose-500/40",
+    },
+
+    skills: [
+      {
+        name: "Data Analysis",
+        level: "Proficient",
+      },
+      {
+        name: "Reporting Automation",
+        level: "Proficient",
+      },
+      {
+        name: "Process Automation",
+        level: "Working Knowledge",
+      },
+      {
+        name: "MS Office Suite",
+        level: "Proficient",
       },
     ],
   },
