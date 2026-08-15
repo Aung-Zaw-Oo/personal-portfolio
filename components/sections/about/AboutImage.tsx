@@ -15,7 +15,7 @@ export default function AboutImage() {
     >
       {/* Profile Image with subtle scale up */}
       <Image
-        src="/images/profile/aung-zaw-oo.jpg"
+        src="/images/profile/aung-zaw-oo.png"
         alt="Aung Zaw Oo - Full Stack Developer"
         fill
         sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 400px"
@@ -29,7 +29,7 @@ export default function AboutImage() {
       {/* Floating Tech Badge (Slightly rises when card is hovered) */}
       <motion.div
         variants={{
-          hover: { y: -3, x: 2, scale: 1.02 }
+          hover: { y: -3, x: 2, scale: 1.02 },
         }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
         className="absolute top-5 right-5 rounded-xl border border-zinc-800 bg-zinc-950/70 px-4 py-2 text-xs text-zinc-300 backdrop-blur-md select-none"
@@ -67,7 +67,7 @@ export default function AboutImage() {
           hover: {
             scale: 1.2,
             opacity: 0.4,
-          }
+          },
         }}
         transition={{ duration: 0.5, ease: "easeOut" }}
         className="pointer-events-none absolute -bottom-20 left-1/2 h-40 w-40 -translate-x-1/2 rounded-full bg-blue-500/20 blur-3xl"
