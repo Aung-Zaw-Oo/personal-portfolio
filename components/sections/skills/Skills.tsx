@@ -41,6 +41,11 @@ export default function Skills() {
     },
   } as const;
 
+  // Split into the first 4 (fills the grid evenly on large screens)
+  // and any remainder (centered on its own row below)
+  const primarySkills = skills.slice(0, 4);
+  const remainingSkills = skills.slice(4);
+
   return (
     <section
       id="skills"
@@ -84,13 +89,15 @@ export default function Skills() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4"
+          className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-6 lg:items-stretch"
         >
-          {skills.map((skill) => (
-            // Framer Motion handles variants automatically through child components.
-            // Since SkillCard (which we upgraded previously) has a variants definition
-            // mapping to "hidden" and "visible", we don't need to redeclare variants here.
-            <SkillCard key={skill.title} {...skill} />
+          {skills.map((skill, index) => (
+            <div
+              key={skill.title}
+              className={`h-full ${index < 3 ? "lg:col-span-2" : "lg:col-span-3"}`}
+            >
+              <SkillCard {...skill} />
+            </div>
           ))}
         </motion.div>
       </Container>

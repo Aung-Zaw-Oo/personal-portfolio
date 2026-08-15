@@ -58,7 +58,7 @@ export default function SkillCard({ title, icon, skills, theme }: Props) {
       viewport={{ once: true, margin: "-100px" }}
       whileHover={{ y: -6, scale: 1.01 }}
       transition={{ type: "spring", stiffness: 400, damping: 25 }}
-      className={`rounded-3xl border border-zinc-800 bg-zinc-900/40 p-8 shadow-xl transition-all duration-300 ${theme.hover}`}
+      className={`flex h-full flex-col rounded-3xl border border-zinc-800 bg-zinc-900/40 p-8 shadow-xl transition-all duration-300 ${theme.hover}`}
     >
       {/* Icon */}
       <motion.div
@@ -75,21 +75,21 @@ export default function SkillCard({ title, icon, skills, theme }: Props) {
       </h3>
 
       {/* Skills */}
-      <ul className="space-y-4">
+      <ul className="flex flex-1 flex-col justify-start gap-4">
         {skills.map((skill) => (
           <motion.li
             key={skill.name}
             variants={itemVariants}
             whileHover={{ x: 4 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            className="group flex items-center justify-between"
+            className="group flex items-center justify-between gap-3"
           >
-            <span className="text-sm text-zinc-300 transition-colors duration-200 group-hover:text-white">
+            <span className="min-w-0 truncate text-sm text-zinc-300 transition-colors duration-200 group-hover:text-white">
               {skill.name}
             </span>
 
             <span
-              className={`rounded-md border border-zinc-800/40 bg-zinc-950/40 px-2 py-0.5 font-mono text-xs font-semibold transition-colors duration-200 group-hover:border-zinc-700/50 ${theme.level}`}
+              className={`shrink-0 rounded-md border border-zinc-800/40 bg-zinc-950/40 px-2 py-0.5 font-mono text-xs leading-tight font-semibold whitespace-nowrap transition-colors duration-200 group-hover:border-zinc-700/50 ${theme.level}`}
             >
               {skill.level}
             </span>
