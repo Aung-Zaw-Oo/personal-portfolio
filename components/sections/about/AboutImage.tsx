@@ -17,7 +17,7 @@ export default function AboutImage() {
     >
       {/* Profile Image */}
       <Image
-        src="/images/profile/aung-zaw-oo.png"
+        src="/images/profile/aung-zaw-oo.webp"
         alt="Aung Zaw Oo, Full Stack Developer"
         fill
         sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 400px"
