@@ -8,13 +8,14 @@ export default function Services() {
   return (
     <section
       id="services"
+      aria-labelledby="services-heading"
       className="relative z-10 border-y border-zinc-900 bg-zinc-950/60 py-24"
     >
       <Container>
-        {/* Animates down to up sequentially when scrolled into view */}
+        {/* Services Section Header */}
         <ServicesHeader />
 
-        {/* Staggers its cards sequentially shortly after coming into view */}
+        {/* Services Cards */}
         <ServicesGrid />
       </Container>
     </section>

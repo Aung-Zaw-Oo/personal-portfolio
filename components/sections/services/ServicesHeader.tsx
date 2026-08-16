@@ -1,21 +1,21 @@
+// components/sections/services/ServicesHeader.tsx
+
 "use client";
 
 import { motion } from "framer-motion";
 
 export default function ServicesHeader() {
-  // Unified orchestration container
   const containerVariants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.12, // Visual gap between each text block's entry
+        staggerChildren: 0.12,
         delayChildren: 0.1,
       },
     },
   };
 
-  // Fluid physics for individual elements
   const itemVariants = {
     hidden: { opacity: 0, y: 16 },
     show: {
@@ -35,7 +35,7 @@ export default function ServicesHeader() {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, margin: "-100px" }}
-      className="mx-auto mb-16 max-w-2xl text-center"
+      className="mx-auto mb-16 max-w-3xl text-center"
     >
       {/* Eyebrow */}
       <motion.p
@@ -47,10 +47,11 @@ export default function ServicesHeader() {
 
       {/* Heading */}
       <motion.h2
+        id="services-heading"
         variants={itemVariants}
         className="mb-4 text-4xl font-bold tracking-tight text-white md:text-5xl"
       >
-        Full Spectrum Freelance Solutions
+        Full Stack Web Development Services
       </motion.h2>
 
       {/* Description */}
@@ -58,9 +59,10 @@ export default function ServicesHeader() {
         variants={itemVariants}
         className="text-base leading-relaxed font-light text-slate-300"
       >
-        Designed to maximize client outcomes. Elevating your vision with
-        scalable strategies, immaculate frontends, and dynamic engineering
-        support.
+        I build modern, responsive web applications and business systems using
+        React, Next.js, TypeScript, Node.js, NestJS, and modern database
+        technologies — from frontend interfaces and REST APIs to CMS, ERP, CRM,
+        and data-driven applications.
       </motion.p>
     </motion.div>
   );

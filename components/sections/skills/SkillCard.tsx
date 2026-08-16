@@ -1,3 +1,5 @@
+// components/sections/skills/SkillCard.tsx
+
 "use client";
 
 import { motion } from "framer-motion";
@@ -24,9 +26,11 @@ interface Props {
 }
 
 export default function SkillCard({ title, icon, skills, theme }: Props) {
-  // Entrance stagger orchestration
   const cardVariants = {
-    hidden: { opacity: 0, y: 25 },
+    hidden: {
+      opacity: 0,
+      y: 25,
+    },
     visible: {
       opacity: 1,
       y: 0,
@@ -40,36 +44,57 @@ export default function SkillCard({ title, icon, skills, theme }: Props) {
     },
   } as const;
 
-  // Skill line transition
   const itemVariants = {
-    hidden: { opacity: 0, x: -10 },
+    hidden: {
+      opacity: 0,
+      x: -10,
+    },
     visible: {
       opacity: 1,
       x: 0,
-      transition: { type: "spring", stiffness: 120, damping: 15 },
+      transition: {
+        type: "spring",
+        stiffness: 120,
+        damping: 15,
+      },
     },
   } as const;
 
   return (
-    <motion.div
+    <motion.article
       variants={cardVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
-      whileHover={{ y: -6, scale: 1.01 }}
-      transition={{ type: "spring", stiffness: 400, damping: 25 }}
+      whileHover={{
+        y: -6,
+        scale: 1.01,
+      }}
+      transition={{
+        type: "spring",
+        stiffness: 400,
+        damping: 25,
+      }}
       className={`flex h-full flex-col rounded-3xl border border-zinc-800 bg-zinc-900/40 p-8 shadow-xl transition-all duration-300 ${theme.hover}`}
     >
-      {/* Icon */}
+      {/* Category Icon */}
       <motion.div
-        whileHover={{ rotate: 12, scale: 1.1 }}
-        transition={{ type: "spring", stiffness: 300, damping: 15 }}
+        whileHover={{
+          rotate: 12,
+          scale: 1.1,
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 300,
+          damping: 15,
+        }}
+        aria-hidden="true"
         className={`mb-6 flex h-12 w-12 items-center justify-center rounded-2xl text-xl ${theme.bg} ${theme.icon}`}
       >
         <FontAwesomeIcon icon={icon} />
       </motion.div>
 
-      {/* Title */}
+      {/* Category Title */}
       <h3 className="mb-6 font-heading text-xl font-bold text-white">
         {title}
       </h3>
@@ -81,7 +106,11 @@ export default function SkillCard({ title, icon, skills, theme }: Props) {
             key={skill.name}
             variants={itemVariants}
             whileHover={{ x: 4 }}
-            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            transition={{
+              type: "spring",
+              stiffness: 300,
+              damping: 20,
+            }}
             className="group flex items-center justify-between gap-3"
           >
             <span className="min-w-0 truncate text-sm text-zinc-300 transition-colors duration-200 group-hover:text-white">
@@ -96,6 +125,6 @@ export default function SkillCard({ title, icon, skills, theme }: Props) {
           </motion.li>
         ))}
       </ul>
-    </motion.div>
+    </motion.article>
   );
 }

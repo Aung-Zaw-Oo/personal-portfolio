@@ -1,3 +1,5 @@
+// components/sections/skills/Skills.tsx
+
 "use client";
 
 import { motion } from "framer-motion";
@@ -6,18 +8,18 @@ import SkillCard from "./SkillCard";
 import { skills } from "./skills.data";
 
 export default function Skills() {
-  // Stagger wrapper for the grid structure
+  // Stagger animation for skill cards
   const gridContainerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1, // Stagger delay between each card
+        staggerChildren: 0.1,
       },
     },
   } as const;
 
-  // Upward slide and reveal animation for the section header text
+  // Section header animation
   const headerVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -32,23 +34,24 @@ export default function Skills() {
     },
   } as const;
 
+  // Individual header element animation
   const headerChildVariants = {
     hidden: { opacity: 0, y: 15 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { type: "spring", stiffness: 100, damping: 18 },
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 18,
+      },
     },
   } as const;
-
-  // Split into the first 4 (fills the grid evenly on large screens)
-  // and any remainder (centered on its own row below)
-  const primarySkills = skills.slice(0, 4);
-  const remainingSkills = skills.slice(4);
 
   return (
     <section
       id="skills"
+      aria-labelledby="skills-heading"
       className="relative z-10 overflow-hidden border-y border-zinc-900 bg-zinc-950/60 py-24"
     >
       <Container>
@@ -68,6 +71,7 @@ export default function Skills() {
           </motion.p>
 
           <motion.h2
+            id="skills-heading"
             variants={headerChildVariants}
             className="font-heading text-4xl font-bold text-white sm:text-5xl"
           >
@@ -94,7 +98,9 @@ export default function Skills() {
           {skills.map((skill, index) => (
             <div
               key={skill.title}
-              className={`h-full ${index < 3 ? "lg:col-span-2" : "lg:col-span-3"}`}
+              className={`h-full ${
+                index < 3 ? "lg:col-span-2" : "lg:col-span-3"
+              }`}
             >
               <SkillCard {...skill} />
             </div>
@@ -102,9 +108,16 @@ export default function Skills() {
         </motion.div>
       </Container>
 
-      {/* Decorative Subtle Background Glow */}
-      <div className="pointer-events-none absolute top-1/2 left-1/4 -z-10 h-96 w-96 -translate-y-1/2 rounded-full bg-blue-500/5 blur-3xl" />
-      <div className="pointer-events-none absolute top-1/3 right-1/4 -z-10 h-96 w-96 -translate-y-1/2 rounded-full bg-indigo-500/5 blur-3xl" />
+      {/* Decorative Background Glows */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute top-1/2 left-1/4 -z-10 h-96 w-96 -translate-y-1/2 rounded-full bg-blue-500/5 blur-3xl"
+      />
+
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute top-1/3 right-1/4 -z-10 h-96 w-96 -translate-y-1/2 rounded-full bg-indigo-500/5 blur-3xl"
+      />
     </section>
   );
 }
