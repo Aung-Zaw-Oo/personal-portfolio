@@ -1,3 +1,5 @@
+// components/sections/hero/Hero.tsx
+
 "use client";
 
 import { motion } from "framer-motion";
@@ -44,7 +46,7 @@ export default function Hero() {
         type: "spring",
         stiffness: 80,
         damping: 18,
-        delay: 0.4, // Delays terminal slightly so the eye transitions from left to right
+        delay: 0.4,
       },
     },
   } as const;
@@ -52,11 +54,19 @@ export default function Hero() {
   return (
     <section
       id="hero"
+      aria-labelledby="hero-heading"
       className="relative flex min-h-screen items-center justify-center overflow-hidden pt-24 pb-10"
     >
       {/* Background Ambient Glow Effects */}
-      <div className="absolute top-1/4 left-1/4 -z-10 h-72 w-72 rounded-full bg-blue-500/10 blur-[100px]" />
-      <div className="absolute right-1/4 bottom-1/4 -z-10 h-80 w-80 rounded-full bg-purple-500/10 blur-[120px]" />
+      <div
+        aria-hidden="true"
+        className="absolute top-1/4 left-1/4 -z-10 h-72 w-72 rounded-full bg-blue-500/10 blur-[100px]"
+      />
+
+      <div
+        aria-hidden="true"
+        className="absolute right-1/4 bottom-1/4 -z-10 h-80 w-80 rounded-full bg-purple-500/10 blur-[120px]"
+      />
 
       <Container>
         <div className="grid w-full grid-cols-1 items-center gap-12 lg:grid-cols-12">
@@ -72,24 +82,24 @@ export default function Hero() {
               variants={itemVariants}
               className="inline-flex items-center gap-3 rounded-full border border-slate-700/70 bg-slate-950/80 px-4 py-1.5 text-sm text-slate-200"
             >
-              <span className="relative flex h-2 w-2">
+              <span aria-hidden="true" className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
               </span>
               Available for Freelance & Contract Work
             </motion.div>
 
-            {/* Heading */}
+            {/* Main Heading */}
             <motion.h1
+              id="hero-heading"
               variants={itemVariants}
               className="font-heading text-4xl leading-none font-bold tracking-tight text-white sm:text-5xl md:text-7xl"
             >
-              Crafting{" "}
-              <span className="bg-gradient-to-r from-blue-400 via-purple-300 to-cyan-300 bg-clip-text text-transparent">
-                Digital
-              </span>
+              Aung Zaw Oo
               <br />
-              Full Stack Experiences
+              <span className="bg-gradient-to-r from-blue-400 via-purple-300 to-cyan-300 bg-clip-text text-transparent">
+                Full Stack Developer
+              </span>
             </motion.h1>
 
             {/* Description */}
@@ -97,10 +107,9 @@ export default function Hero() {
               variants={itemVariants}
               className="max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg md:text-xl"
             >
-              {"Hi, I'm"} <strong className="text-white">Aung Zaw Oo</strong>, a
-              Full Stack Developer building modern web applications with clean
-              interfaces, scalable architecture, and meaningful user
-              experiences.
+              Crafting modern digital experiences with clean interfaces,
+              scalable architecture, and meaningful user experiences using
+              React, Next.js, TypeScript, Node.js, and NestJS.
             </motion.p>
 
             {/* Buttons */}
@@ -122,20 +131,28 @@ export default function Hero() {
               variants={itemVariants}
               className="mt-12 grid w-full max-w-md grid-cols-3 gap-8 border-t border-zinc-800 pt-8"
             >
+              {/* Experience */}
               <div>
                 <p className="font-heading text-3xl font-bold">2+</p>
+
                 <p className="text-xs text-zinc-500 uppercase">
                   Years Experience
                 </p>
               </div>
 
+              {/* Projects */}
               <div>
-                <p className="font-heading text-3xl font-bold">{projects.length}</p>
+                <p className="font-heading text-3xl font-bold">
+                  {projects.length}
+                </p>
+
                 <p className="text-xs text-slate-400 uppercase">Projects</p>
               </div>
 
+              {/* Availability / dedication */}
               <div>
                 <p className="font-heading text-3xl font-bold">100%</p>
+
                 <p className="text-xs text-slate-400 uppercase">Dedication</p>
               </div>
             </motion.div>

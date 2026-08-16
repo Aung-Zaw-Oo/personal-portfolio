@@ -1,4 +1,4 @@
-// components\sections\about\AboutHeader.tsx
+// components/sections/about/AboutHeader.tsx
 
 "use client";
 
@@ -39,7 +39,7 @@ export default function AboutHeader() {
         variants={childVariants}
         className="mb-2 text-sm font-semibold tracking-widest text-blue-400 uppercase"
       >
-        My Story
+        About Aung Zaw Oo
       </motion.p>
 
       <motion.h2
