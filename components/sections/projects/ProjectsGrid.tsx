@@ -1,3 +1,5 @@
+// components\sections\projects\ProjectsGrid.tsx
+
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
