@@ -64,6 +64,7 @@ export default function ServiceCard({ service }: Props) {
         {/* Icon Container */}
         <div
           className={`mb-6 flex h-14 w-14 items-center justify-center rounded-2xl text-xl ${color.box} ${color.text} shadow-lg transition-all duration-500 group-hover:scale-110 ${color.glow}`}
+          aria-hidden="true"
         >
           <FontAwesomeIcon icon={service.icon} />
         </div>

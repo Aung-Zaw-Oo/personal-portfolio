@@ -1,6 +1,5 @@
-"use client";
+// components/sections/footer/Footer.tsx
 
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -12,10 +11,8 @@ import {
   faHouse,
   faTerminal,
 } from "@fortawesome/free-solid-svg-icons";
-import {
-  faGithub,
-  faLinkedin,
-} from "@fortawesome/free-brands-svg-icons";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+
 import Container from "@/components/ui/Container";
 
 const footerLinks = [
@@ -53,7 +50,7 @@ const footerLinks = [
 
 const socials = [
   {
-    label: "Mail",
+    label: "Email",
     href: "mailto:1997azo.azo@gmail.com",
     icon: faEnvelope,
   },
@@ -63,23 +60,14 @@ const socials = [
     icon: faLinkedin,
   },
   {
-    label: "Github",
+    label: "GitHub",
     href: "https://github.com/Aung-Zaw-Oo",
     icon: faGithub,
   },
 ];
 
 export default function Footer() {
-  // Solves Next.js hydration warning by updating year solely on client load
-  const [currentYear, setCurrentYear] = useState<string>("2026");
-
-  useEffect(() => {
-    const year = new Date().getFullYear().toString();
-    const frame = requestAnimationFrame(() => {
-      setCurrentYear(year);
-    });
-    return () => cancelAnimationFrame(frame);
-  }, []);
+  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="relative overflow-hidden border-t border-zinc-900 bg-zinc-950 py-12">
@@ -100,7 +88,7 @@ export default function Footer() {
           {/* Brand + Availability */}
           <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <div>
-              <h3 className="flex items-center gap-2 text-2xl font-bold text-white">
+              <h2 className="flex items-center gap-2 text-2xl font-bold text-white">
                 <FontAwesomeIcon
                   icon={faCode}
                   className="text-violet-400"
@@ -108,21 +96,26 @@ export default function Footer() {
                 />
                 AUNG ZAW OO
                 <span className="text-violet-500">.</span>
-              </h3>
+              </h2>
+
+              <p className="mt-1 text-sm font-medium text-violet-400">
+                Full Stack Developer
+              </p>
 
               <p className="mt-2 max-w-md text-sm leading-relaxed text-slate-300">
-                Building modern web experiences with clean interfaces, scalable
-                architecture, and thoughtful user experiences.
+                Building modern web applications with React, Next.js,
+                TypeScript, Node.js, and NestJS.
               </p>
             </div>
 
-            {/* Availability Badge */}
+            {/* Availability */}
             <div className="flex w-fit items-center gap-3 rounded-full border border-zinc-800 bg-zinc-900/40 px-4 py-2 backdrop-blur-md">
               <FontAwesomeIcon
                 icon={faCircle}
                 className="animate-pulse text-[8px] text-emerald-400"
                 aria-hidden="true"
               />
+
               <span className="text-xs font-medium text-zinc-300">
                 Available for freelance work
               </span>
@@ -131,11 +124,7 @@ export default function Footer() {
 
           {/* Navigation + Social */}
           <div className="flex flex-col gap-6 border-y border-zinc-900 py-6 md:flex-row md:items-center md:justify-between">
-            {/* Navigation */}
-            <nav
-              className="flex flex-wrap gap-x-6 gap-y-3"
-              aria-label="Footer Navigation"
-            >
+            <nav className="flex flex-wrap gap-x-6 gap-y-3" aria-label="Footer">
               {footerLinks.map((link) => (
                 <a
                   key={link.label}
@@ -147,12 +136,13 @@ export default function Footer() {
                     className="text-xs transition-colors duration-300 group-hover:text-violet-400"
                     aria-hidden="true"
                   />
+
                   {link.label}
                 </a>
               ))}
             </nav>
 
-            {/* Social Icons */}
+            {/* Social Links */}
             <div className="flex gap-3">
               {socials.map((social) => (
                 <motion.a
@@ -160,7 +150,7 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`Visit Aung Zaw Oo's ${social.label} Profile`}
+                  aria-label={`Visit Aung Zaw Oo's ${social.label} profile`}
                   whileHover={{ y: -3 }}
                   whileTap={{ scale: 0.95 }}
                   className="flex h-10 w-10 items-center justify-center rounded-xl border border-zinc-800 bg-zinc-900/40 text-zinc-400 transition-all duration-300 hover:border-violet-500/40 hover:text-violet-400 focus:ring-1 focus:ring-violet-500/40 focus:outline-none"
