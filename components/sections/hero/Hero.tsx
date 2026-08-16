@@ -135,7 +135,7 @@ export default function Hero() {
               <div>
                 <p className="font-heading text-3xl font-bold">2+</p>
 
-                <p className="text-xs text-zinc-500 uppercase">
+                <p className="text-xs text-zinc-400 uppercase">
                   Years Experience
                 </p>
               </div>

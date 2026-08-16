@@ -1,5 +1,3 @@
-// components/sections/projects/ProjectCard.tsx
-
 "use client";
 
 import { motion } from "framer-motion";
@@ -17,7 +15,6 @@ interface ProjectCardProps {
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
     <motion.article
-      layout="position"
       aria-labelledby={`project-${project.id}-title`}
       whileHover="cardHover"
       variants={{
@@ -32,7 +29,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       }}
       className="group relative isolate flex h-full flex-col overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900/20 backdrop-blur-md transition-colors duration-500 hover:border-violet-500/40 hover:shadow-2xl hover:shadow-violet-500/10"
     >
-      {/* Dynamic Backlight Glow on Hover */}
+      {/* Dynamic Backlight Glow */}
       <div
         aria-hidden="true"
         className="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-br from-violet-500/20 via-transparent to-cyan-500/10 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100"
@@ -53,7 +50,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             {project.categoryLabel}
           </span>
 
-          <span className="font-mono text-xs text-zinc-500">
+          <span className="font-mono text-xs text-zinc-400">
             {project.year}
           </span>
         </div>

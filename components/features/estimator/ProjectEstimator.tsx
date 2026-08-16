@@ -185,7 +185,7 @@ export default function ProjectEstimator({ onPrefill }: ProjectEstimatorProps) {
             </span>
             Instant Project Cost Calculator
             {isLoadingRate && (
-              <span className="animate-pulse text-xs font-normal text-zinc-500">
+              <span className="animate-pulse text-xs font-normal text-zinc-400">
                 (Syncing live updates...)
               </span>
             )}
@@ -228,7 +228,7 @@ export default function ProjectEstimator({ onPrefill }: ProjectEstimatorProps) {
                             </motion.span>
                           )}
                         </div>
-                        <span className="text-[11px] text-zinc-500">
+                        <span className="text-[11px] text-zinc-400">
                           {option.id === "frontend" &&
                             "Landing pages, microsites, UI polish."}
                           {option.id === "backend" &&
@@ -269,7 +269,7 @@ export default function ProjectEstimator({ onPrefill }: ProjectEstimatorProps) {
                         }`}
                       >
                         <span className="font-medium">{feature.label}</span>
-                        <span className="text-[11px] text-zinc-500">
+                        <span className="text-[11px] text-zinc-400">
                           {feature.id === "authentication" &&
                             "Logins, session security, and user accounts."}
                           {feature.id === "payments" &&
@@ -312,7 +312,7 @@ export default function ProjectEstimator({ onPrefill }: ProjectEstimatorProps) {
                 <div className="space-y-6">
                   {/* LOCALIZED CURRENCY SELECTOR */}
                   <div className="flex items-center justify-between border-b border-zinc-800/60 pb-3">
-                    <span className="text-xs font-semibold tracking-widest text-zinc-500 uppercase">
+                    <span className="text-xs font-semibold tracking-widest text-zinc-400 uppercase">
                       Display Currency
                     </span>
                     <div className="flex rounded-lg border border-zinc-800 bg-zinc-900 p-0.5">
@@ -343,7 +343,7 @@ export default function ProjectEstimator({ onPrefill }: ProjectEstimatorProps) {
 
                   {/* BUDGET OUTPUT */}
                   <div>
-                    <p className="mb-2 text-xs font-semibold tracking-widest text-zinc-500 uppercase">
+                    <p className="mb-2 text-xs font-semibold tracking-widest text-zinc-400 uppercase">
                       Estimated Budget Range
                     </p>
                     <div className="relative min-h-[3rem] overflow-visible">
@@ -364,7 +364,7 @@ export default function ProjectEstimator({ onPrefill }: ProjectEstimatorProps) {
 
                   {/* TIMELINE OUTPUT */}
                   <div className="border-t border-zinc-800/60 pt-4">
-                    <p className="mb-1 text-xs font-semibold tracking-widest text-zinc-500 uppercase">
+                    <p className="mb-1 text-xs font-semibold tracking-widest text-zinc-400 uppercase">
                       Estimated Delivery Timeline
                     </p>
                     <div className="relative h-8 overflow-hidden">
@@ -425,7 +425,7 @@ export default function ProjectEstimator({ onPrefill }: ProjectEstimatorProps) {
               </button>
 
               {/* COMPLIANCE DISCLAIMER FOR THE LOCAL REGION */}
-              <p className="px-2 text-center text-[11px] leading-normal text-zinc-500">
+              <p className="px-2 text-center text-[11px] leading-normal text-zinc-400">
                 * Estimates are calculated dynamically based on baseline
                 development scope. Final invoice estimates can adjust depending
                 on custom market components or significant variations in local

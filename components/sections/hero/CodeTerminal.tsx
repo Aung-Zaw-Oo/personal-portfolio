@@ -48,13 +48,15 @@ export default function CodeTerminal({
           <span className="h-3 w-3 rounded-full bg-green-500/80" />
         </div>
 
-        <span className="font-mono text-[11px] text-zinc-500">{filename}</span>
+        <span className="font-mono text-[11px] text-zinc-400">{filename}</span>
       </div>
 
       <div className="p-6 font-mono text-xs leading-relaxed text-zinc-300">
-        <p className="text-emerald-400">import Developer from &quot;@core/human&quot;;</p>
+        <p className="text-emerald-400">
+          import Developer from &quot;@core/human&quot;;
+        </p>
 
-        <p className="mt-3 text-zinc-500">
+        <p className="mt-3 text-zinc-400">
           {"// Transforming ideas into digital solutions"}
         </p>
 
@@ -64,23 +66,31 @@ export default function CodeTerminal({
 
         <div className="space-y-1 border-l border-zinc-800 pl-4">
           <p>
-            role: <span className="text-cyan-400">&quot;{data.role}&quot;</span>,
+            role: <span className="text-cyan-400">&quot;{data.role}&quot;</span>
+            ,
           </p>
           <p>
-            frontend: <span className="text-blue-400">&quot;{data.frontend}&quot;</span>,
+            frontend:{" "}
+            <span className="text-blue-400">&quot;{data.frontend}&quot;</span>,
           </p>
           <p>
-            backend: <span className="text-purple-400">&quot;{data.backend}&quot;</span>,
+            backend:{" "}
+            <span className="text-purple-400">&quot;{data.backend}&quot;</span>,
           </p>
           <p>
             database:{" "}
-            <span className="text-emerald-400">&quot;{data.database}&quot;</span>,
+            <span className="text-emerald-400">
+              &quot;{data.database}&quot;
+            </span>
+            ,
           </p>
           <p>
-            focus: <span className="text-cyan-400">&quot;{data.focus}&quot;</span>,
+            focus:{" "}
+            <span className="text-cyan-400">&quot;{data.focus}&quot;</span>,
           </p>
           <p>
-            status: <span className="text-emerald-400">&quot;{data.status}&quot;</span>
+            status:{" "}
+            <span className="text-emerald-400">&quot;{data.status}&quot;</span>
           </p>
         </div>
 
@@ -89,7 +99,7 @@ export default function CodeTerminal({
         {/* Active Engine Monitoring */}
         <div className="mt-4 rounded-xl border border-zinc-800/50 bg-zinc-950/80 p-4">
           <div className="mb-3 flex items-center justify-between">
-            <span className="text-[10px] font-semibold tracking-wider text-zinc-500 uppercase">
+            <span className="text-[10px] font-semibold tracking-wider text-zinc-400 uppercase">
               Active Engine Monitoring
             </span>
             <span className="relative flex h-2.5 w-2.5">

@@ -39,7 +39,7 @@ export default function ContactInfo() {
               </div>
 
               <div>
-                <p className="font-mono text-xs font-semibold tracking-widest text-zinc-500">
+                <p className="font-mono text-xs font-semibold tracking-widest text-zinc-400">
                   {item.label}
                 </p>
 

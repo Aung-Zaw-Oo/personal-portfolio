@@ -56,7 +56,7 @@ export default function AboutImage() {
 
         <p className="text-sm text-zinc-400">Full Stack Developer</p>
 
-        <div className="mt-3 flex gap-2 text-xs text-zinc-500">
+        <div className="mt-3 flex gap-2 text-xs text-zinc-400">
           <span>React</span>
           <span aria-hidden="true">•</span>
           <span>Next.js</span>

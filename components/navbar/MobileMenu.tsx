@@ -172,7 +172,7 @@ export default function MobileMenu() {
                   <FontAwesomeIcon icon={faArrowRight} className="text-sm" />
                 </a>
 
-                <p className="mt-2 text-center text-xs text-zinc-500">
+                <p className="mt-2 text-center text-xs text-zinc-400">
                   © 2026 Aung Zaw Oo
                 </p>
               </motion.div>
