@@ -10,7 +10,12 @@ interface Props {
   items: RangeValue[];
 }
 
-export default function RangeControl({ label, value, setValue, items }: Props) {
+export default function RangeControl({
+  label,
+  value,
+  setValue,
+  items,
+}: Props) {
   const inputId = `${label
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
@@ -61,12 +66,12 @@ export default function RangeControl({ label, value, setValue, items }: Props) {
       </motion.div>
 
       {/* Slider Labels */}
-      <div className="mt-3 flex justify-between font-mono text-[10px] text-zinc-600">
+      <div className="mt-3 flex justify-between font-mono text-[10px] text-zinc-400">
         <span
           className={`transition-colors ${
             value === 0
               ? "font-medium text-violet-400"
-              : "group-hover/range:text-zinc-500"
+              : "group-hover/range:text-white"
           }`}
         >
           {items[0].label.split(" (")[0]}
@@ -76,7 +81,7 @@ export default function RangeControl({ label, value, setValue, items }: Props) {
           className={`transition-colors ${
             value === items.length - 1
               ? "font-medium text-violet-400"
-              : "group-hover/range:text-zinc-500"
+              : "group-hover/range:text-white"
           }`}
         >
           {items[items.length - 1].label.split(" (")[0]}

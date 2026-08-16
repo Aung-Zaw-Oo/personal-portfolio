@@ -129,7 +129,7 @@ export default function Footer() {
                 <a
                   key={link.label}
                   href={link.href}
-                  className="group flex items-center gap-2 text-sm text-zinc-500 transition-colors duration-300 hover:text-white"
+                  className="group flex items-center gap-2 text-sm text-zinc-400 transition-colors duration-300 hover:text-white"
                 >
                   <FontAwesomeIcon
                     icon={link.icon}
@@ -176,8 +176,8 @@ export default function Footer() {
                 aria-hidden="true"
               />
               Built with
-              <span className="text-zinc-500">React</span>+
-              <span className="text-zinc-500">Next.js</span>
+              <span className="text-zinc-400">React</span>+
+              <span className="text-zinc-400">Next.js</span>
             </p>
           </div>
         </motion.div>
