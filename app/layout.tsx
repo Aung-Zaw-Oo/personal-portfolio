@@ -1,3 +1,5 @@
+// app\layout.tsx
+
 import type { Metadata } from "next";
 import { Space_Grotesk, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
@@ -22,13 +24,47 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://aungzawoo.vercel.app"),
+
   title: "Aung Zaw Oo | Full Stack Developer",
+
   description:
     "Aung Zaw Oo is a Full Stack Developer specializing in React, Next.js, TypeScript, Node.js, NestJS, and modern web applications.",
+
+  alternates: {
+    canonical: "/",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
 
   verification: {
     google: "KmH_BeaH3eSC7ixf-ow1fKpI1dkvJgLpMC35fRlzNng",
   },
+
+  openGraph: {
+    title: "Aung Zaw Oo | Full Stack Developer",
+    description:
+      "Aung Zaw Oo is a Full Stack Developer specializing in React, Next.js, TypeScript, Node.js, NestJS, and modern web applications.",
+    url: "https://aungzawoo.vercel.app/",
+    siteName: "Aung Zaw Oo",
+    locale: "en_US",
+    type: "website",
+  },
+};
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Aung Zaw Oo",
+  url: "https://aungzawoo.vercel.app/",
+  jobTitle: "Full Stack Developer",
+  sameAs: [
+    "https://www.linkedin.com/in/aung-zaw-oo-180a46387/",
+    "https://github.com/Aung-Zaw-Oo",
+  ],
 };
 
 export default function RootLayout({
@@ -42,18 +78,29 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${plusJakarta.variable} dark h-full scroll-smooth antialiased`}
     >
       <body className="flex min-h-full flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(personJsonLd),
+          }}
+        />
+
         <a
           href="#main-content"
           className="sr-only rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white ring-2 ring-blue-400/60 focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50"
         >
           Skip to main content
         </a>
+
         <ParticleBackground />
         <CustomCursor />
         <Navbar />
         <SectionPill />
+
         {children}
+
         <ScrollToTopButton />
+
         <SpeedInsights />
         <Analytics />
       </body>
