@@ -31,6 +31,15 @@ export const metadata: Metadata = {
   description:
     "Aung Zaw Oo is a Full Stack Developer specializing in React, Next.js, TypeScript, Node.js, NestJS, and modern web applications.",
 
+  authors: [
+    {
+      name: "Aung Zaw Oo",
+      url: "https://aungzawoo.vercel.app/",
+    },
+  ],
+
+  creator: "Aung Zaw Oo",
+
   alternates: {
     canonical: "/",
   },
@@ -52,6 +61,12 @@ export const metadata: Metadata = {
     siteName: "Aung Zaw Oo",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/images/profile/aung-zaw-oo.png",
+        alt: "Aung Zaw Oo | Full Stack Developer",
+      },
+    ],
   },
 };
 
@@ -60,6 +75,7 @@ const personJsonLd = {
   "@type": "Person",
   name: "Aung Zaw Oo",
   url: "https://aungzawoo.vercel.app/",
+  image: "https://aungzawoo.vercel.app/images/profile/aung-zaw-oo.png",
   jobTitle: "Full Stack Developer",
   sameAs: [
     "https://www.linkedin.com/in/aung-zaw-oo-180a46387/",

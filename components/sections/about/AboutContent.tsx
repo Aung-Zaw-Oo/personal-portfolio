@@ -1,10 +1,16 @@
+// components\sections\about\AboutContent.tsx
+
 "use client";
 
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AboutCard from "./AboutCard";
 import AboutQuote from "./AboutQuote";
-import { faCode, faDatabase, faBriefcase } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCode,
+  faDatabase,
+  faBriefcase,
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function AboutContent() {
   // Stagger configurations for container structures
@@ -41,29 +47,29 @@ export default function AboutContent() {
       viewport={{ once: true, margin: "-80px" }}
       className="flex flex-col gap-8"
     >
-      {/* Story Text Paragraphs */}
+      {/* Story Text */}
       <motion.div variants={itemVariants} className="space-y-6">
         <p className="text-lg leading-relaxed text-slate-200">
-          I am a Full Stack Developer with a professional background in banking,
-          accounting, and data reporting. My experience working with business
-          data helped me understand how technology can solve real operational
-          problems.
+          I&apos;m Aung Zaw Oo, a Full Stack Developer with a professional
+          background in banking, accounting, and data reporting. My experience
+          working with business data helped me understand how technology can
+          solve real operational problems.
         </p>
 
         <p className="leading-relaxed text-slate-300">
           My journey into software engineering started through self-learning and
-          continuous practice. Today, I build modern web applications combining
-          clean frontend experiences with reliable backend systems.
+          continuous practice. Today, I build modern web applications by
+          combining clean frontend experiences with reliable backend systems.
         </p>
 
         <p className="leading-relaxed text-slate-300">
           I enjoy transforming ideas into functional products — from designing
-          intuitive interfaces to developing APIs, database structures, and
-          scalable application logic.
+          intuitive interfaces to developing APIs, database structures,
+          authentication systems, and scalable application logic.
         </p>
       </motion.div>
 
-      {/* Focus Cards Grid */}
+      {/* Technical Focus Cards */}
       <motion.div
         variants={itemVariants}
         className="grid grid-cols-1 gap-6 sm:grid-cols-2"
@@ -72,10 +78,7 @@ export default function AboutContent() {
           <AboutCard
             icon={faCode}
             title="Frontend Engineering"
-            description="
-              Building modern interfaces with React, Next.js,
-              TypeScript, Tailwind CSS, and component-driven architecture.
-            "
+            description="Building modern interfaces with React, Next.js, TypeScript, Tailwind CSS, and component-driven architecture."
           />
         </div>
 
@@ -83,15 +86,12 @@ export default function AboutContent() {
           <AboutCard
             icon={faDatabase}
             title="Backend Development"
-            description="
-              Designing APIs, authentication systems,
-              database solutions, and maintainable application logic.
-            "
+            description="Designing APIs, authentication systems, database solutions, and maintainable application logic."
           />
         </div>
       </motion.div>
 
-      {/* Experience Highlight Card */}
+      {/* Professional Experience */}
       <motion.div
         variants={itemVariants}
         whileHover={{ scale: 1.01 }}
@@ -119,11 +119,11 @@ export default function AboutContent() {
         <p className="mt-4 text-sm leading-relaxed text-slate-300">
           Combining business understanding with technical expertise allows me to
           build software that is not only functional, but also aligned with
-          real-world requirements.
+          real-world requirements and user needs.
         </p>
       </motion.div>
 
-      {/* Quote Component */}
+      {/* Personal Philosophy */}
       <motion.div variants={itemVariants}>
         <AboutQuote />
       </motion.div>
