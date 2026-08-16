@@ -24,7 +24,11 @@ const plusJakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: "Aung Zaw Oo | Full Stack Developer",
   description:
-    "Portfolio of Aung Zaw Oo, a Full Stack Developer building modern web applications.",
+    "Aung Zaw Oo is a Full Stack Developer specializing in React, Next.js, TypeScript, Node.js, NestJS, and modern web applications.",
+
+  verification: {
+    google: "KmH_BeaH3eSC7ixf-ow1fKpI1dkvJgLpMC35fRlzNng",
+  },
 };
 
 export default function RootLayout({
