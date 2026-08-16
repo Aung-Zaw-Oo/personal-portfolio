@@ -210,34 +210,34 @@ export default function ProjectEstimator({ onPrefill }: ProjectEstimatorProps) {
                         role="radio"
                         aria-checked={isSelected}
                         onClick={() => setProjectType(option.id)}
-                        className={`group relative flex items-center justify-between overflow-hidden rounded-xl border px-4 py-3 text-left text-sm transition-all duration-300 ${
+                        className={`flex flex-col items-start gap-2 rounded-xl border px-4 py-3 text-left text-sm transition-all duration-200 ${
                           isSelected
                             ? "border-violet-500/40 bg-violet-500/10 text-white"
                             : "border-zinc-800 bg-zinc-900/40 text-zinc-400 hover:border-zinc-700 hover:text-white"
                         }`}
                       >
-                        <div className="space-y-1">
+                        <div className="flex w-full items-center justify-between gap-2">
                           <span className="font-medium">{option.label}</span>
-                          <span className="text-[11px] text-zinc-500">
-                            {option.id === "frontend" &&
-                              "Landing pages, microsites, UI polish."}
-                            {option.id === "backend" &&
-                              "APIs, data processing, server logic."}
-                            {option.id === "fullstack" &&
-                              "Frontend + backend with database."}
-                            {option.id === "custom" &&
-                              "Bespoke workflows and integrations."}
-                          </span>
+                          {isSelected && (
+                            <motion.span
+                              initial={{ scale: 0.5, opacity: 0 }}
+                              animate={{ scale: 1, opacity: 1 }}
+                              className="font-bold text-violet-400"
+                            >
+                              ✓
+                            </motion.span>
+                          )}
                         </div>
-                        {isSelected && (
-                          <motion.span
-                            initial={{ scale: 0.5, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            className="font-bold text-violet-400"
-                          >
-                            ✓
-                          </motion.span>
-                        )}
+                        <span className="text-[11px] text-zinc-500">
+                          {option.id === "frontend" &&
+                            "Landing pages, microsites, UI polish."}
+                          {option.id === "backend" &&
+                            "APIs, data processing, server logic."}
+                          {option.id === "fullstack" &&
+                            "Frontend + backend with database."}
+                          {option.id === "custom" &&
+                            "Bespoke workflows and integrations."}
+                        </span>
                       </button>
                     );
                   })}
