@@ -1,3 +1,5 @@
+// components/sections/projects/ProjectCard.tsx
+
 "use client";
 
 import { motion } from "framer-motion";
@@ -16,22 +18,27 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   return (
     <motion.article
       layout="position"
+      aria-labelledby={`project-${project.id}-title`}
       whileHover="cardHover"
       variants={{
         cardHover: {
           y: -8,
-          transition: { type: "spring", stiffness: 300, damping: 25 },
+          transition: {
+            type: "spring",
+            stiffness: 300,
+            damping: 25,
+          },
         },
       }}
       className="group relative isolate flex h-full flex-col overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900/20 backdrop-blur-md transition-colors duration-500 hover:border-violet-500/40 hover:shadow-2xl hover:shadow-violet-500/10"
     >
       {/* Dynamic Backlight Glow on Hover */}
       <div
-        className="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-br from-violet-500/20 via-transparent to-cyan-500/10 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100"
         aria-hidden="true"
+        className="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-br from-violet-500/20 via-transparent to-cyan-500/10 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100"
       />
 
-      {/* Project Preview wrapper */}
+      {/* Project Preview */}
       <ProjectPreview
         image={project.image}
         title={project.title}
@@ -51,67 +58,89 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           </span>
         </div>
 
-        {/* Title */}
-        <h3 className="mb-3 min-h-[64px] text-2xl leading-tight font-bold text-white transition-colors duration-300 group-hover:text-violet-400">
+        {/* Project Title */}
+        <h3
+          id={`project-${project.id}-title`}
+          className="mb-3 min-h-[64px] text-2xl leading-tight font-bold text-white transition-colors duration-300 group-hover:text-violet-400"
+        >
           {project.title}
         </h3>
 
-        {/* Description */}
+        {/* Project Description */}
         <p className="mb-6 line-clamp-3 min-h-[72px] text-sm leading-relaxed font-light text-slate-300">
           {project.description}
         </p>
 
-        {/* Tech Badges */}
+        {/* Technologies */}
         <div className="mt-auto">
           <ProjectTech tech={project.tech} />
         </div>
       </div>
 
       {/* Footer Actions */}
-      <div className="flex items-center justify-between border-t border-zinc-800/70 px-6 pt-4 pb-6">
-        {/* Live Demo Link */}
-        <motion.a
-          href={project.liveUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          initial="initial"
-          whileHover="hover" // Triggers hover variant propagation downwards to children
-          whileTap={{ scale: 0.98 }}
-          className="flex items-center gap-1.5 text-sm font-medium text-white transition-colors duration-200 hover:text-violet-400"
-        >
-          <span>Live Demo</span>
+      {(project.liveUrl || project.githubUrl) && (
+        <div className="flex items-center justify-between border-t border-zinc-800/70 px-6 pt-4 pb-6">
+          {/* Live Demo */}
+          {project.liveUrl && (
+            <motion.a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`View live demo of ${project.title}`}
+              initial="initial"
+              whileHover="hover"
+              whileTap={{ scale: 0.98 }}
+              className="flex items-center gap-1.5 text-sm font-medium text-white transition-colors duration-200 hover:text-violet-400"
+            >
+              <span>Live Demo</span>
 
-          {/* Micro-interaction: Slides arrow diagonally upward-right on block hover */}
-          <motion.span
-            whileHover={{ x: 3, y: -3 }}
-            transition={{ type: "spring", stiffness: 350, damping: 15 }}
-            className="inline-block"
-          >
-            <FontAwesomeIcon
-              icon={faArrowUpRightFromSquare}
-              className="text-xs"
-            />
-          </motion.span>
-        </motion.a>
+              <motion.span
+                whileHover={{ x: 3, y: -3 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 350,
+                  damping: 15,
+                }}
+                className="inline-block"
+                aria-hidden="true"
+              >
+                <FontAwesomeIcon
+                  icon={faArrowUpRightFromSquare}
+                  className="text-xs"
+                />
+              </motion.span>
+            </motion.a>
+          )}
 
-        {/* GitHub Link */}
-        {project.githubUrl && (
-          <motion.a
-            href={project.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-zinc-400 transition-colors duration-200 hover:text-white"
-            whileHover={{
-              scale: 1.15,
-              rotate: 8,
-              transition: { type: "spring", stiffness: 400, damping: 10 },
-            }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <FontAwesomeIcon icon={faGithub} className="text-lg" />
-          </motion.a>
-        )}
-      </div>
+          {/* GitHub */}
+          {project.githubUrl && (
+            <motion.a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`View ${project.title} source code on GitHub`}
+              title={`View ${project.title} on GitHub`}
+              className="text-zinc-400 transition-colors duration-200 hover:text-white"
+              whileHover={{
+                scale: 1.15,
+                rotate: 8,
+                transition: {
+                  type: "spring",
+                  stiffness: 400,
+                  damping: 10,
+                },
+              }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <FontAwesomeIcon
+                icon={faGithub}
+                className="text-lg"
+                aria-hidden="true"
+              />
+            </motion.a>
+          )}
+        </div>
+      )}
     </motion.article>
   );
 }

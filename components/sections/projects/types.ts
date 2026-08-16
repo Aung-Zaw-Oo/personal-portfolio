@@ -17,7 +17,7 @@ export interface Project {
 
   tech: string[];
 
-  liveUrl: string;
+  liveUrl?: string;
 
   githubUrl?: string;
 }
