@@ -19,8 +19,8 @@ export default function About() {
 
             <div className="mt-6 lg:mt-auto lg:pt-6">
               <Button
-                href="files/aung-zaw-oo-resume.pdf"
-                download="aung-zaw-oo-resume.pdf"
+                href="files/Aung_Zaw_Oo_Full-Stack_Developer_Resume.pdf"
+                download="Aung_Zaw_Oo_Full-Stack_Developer_Resume.pdf"
                 icon={faDownload}
                 variant="primary"
                 className="w-full sm:w-auto"

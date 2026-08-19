@@ -155,8 +155,8 @@ export default function MobileMenu() {
               {/* CTA */}
               <motion.div variants={itemVariants} className="mt-auto space-y-3">
                 <a
-                  href="files/aung-zaw-oo-resume.pdf"
-                  download="aung-zaw-oo-resume.pdf"
+                  href="files/Aung_Zaw_Oo_Full-Stack_Developer_Resume.pdf"
+                  download="Aung_Zaw_Oo_Full-Stack_Developer_Resume.pdf"
                   className="flex w-full items-center justify-center gap-2 rounded-3xl border border-zinc-800 bg-zinc-900/90 py-3 font-medium text-zinc-100 shadow-md shadow-black/20 transition duration-200 hover:border-zinc-700 hover:bg-zinc-800/95"
                 >
                   Download CV

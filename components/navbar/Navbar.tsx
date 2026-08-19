@@ -143,8 +143,8 @@ export default function Navbar() {
             <div className="hidden shrink-0 items-center gap-3 md:flex">
               <Button
                 variant="secondary"
-                href="files/aung-zaw-oo-resume.pdf"
-                download="aung-zaw-oo-resume.pdf"
+                href="files/Aung_Zaw_Oo_Full-Stack_Developer_Resume.pdf"
+                download="Aung_Zaw_Oo_Full-Stack_Developer_Resume.pdf"
                 icon={faDownload}
               >
                 Download CV
